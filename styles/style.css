@@ -1,5 +1,5 @@
 body {
-	margin-top: 50px;
+	margin-top: 65px;
 	background-image: url(../images/background_paper.jpg);
 	background-size: cover;
 }
@@ -8,6 +8,6 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 30px;
   background-color: #101010;
 }
