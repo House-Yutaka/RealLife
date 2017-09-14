@@ -4,10 +4,20 @@ body {
 	background-size: cover;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
+ 
+  text-align: right;
+  bottom: 0px;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 30px;
   background-color: #101010;
+}
+.footer p{
+	color: #FFBF00;
+	font-size: 10px; 
+	margin: 0px;
+	margin-top: 11px;
+	padding: 0px;
+	 
+	height: 20px;
+	width: 100%;
 }
