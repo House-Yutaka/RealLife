@@ -2,22 +2,53 @@ body {
 	margin-top: 65px;
 	background-image: url(../images/background_paper.jpg);
 	background-size: cover;
+	height: 100vh;
 }
+
+.wrapper {
+	min-height: 100%;
+	margin-bottom: -25px;
+}
+.footer,
+.push {
+	height: 25px;
+}
+
 .footer {
- 
-  text-align: right;
-  bottom: 0px;
-  width: 100%;
-  height: 30px;
-  background-color: #101010;
-}
-.footer p{
+	padding-right: 10px;
+	text-align: right;
+	background-color: #000000;
 	color: #FFBF00;
-	font-size: 10px; 
-	margin: 0px;
-	margin-top: 11px;
-	padding: 0px;
-	 
-	height: 20px;
-	width: 100%;
+}
+
+.loginstyle {
+	color: #cc6699;
+}
+.loginstyle:hover{
+	color: #ff6699;
+}
+
+.selectedTab {
+	background: #f333f2;
+}
+
+.square_tv {
+	border: solid 2px #000000; 
+	border-radius: 5px; 
+	color: #000000;
+}
+
+.square_btn {
+	min-width: 100px; 
+	min-height: 40px; 
+	margin: 5px; 
+	background: #0D051F;
+	color: #ff6699;
+	border: solid 2px #000000;
+	border-radius: 5px
+}
+
+.square_btn:disabled {
+	background: #343435;
+	color: #A8A7A9;
 }

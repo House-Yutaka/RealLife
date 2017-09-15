@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="">
 	<script src="https://use.fontawesome.com/5ba948e746.js"></script>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css' type='text/css' media='all' />
+	<script type="text/javascript" src="scripts/login.js"></script>
 
 </head>
 <body>
@@ -31,33 +32,44 @@
 						case 'home': ?>
 						<li><a href="" class="faa-parent animated-hover" class="selectedTab" style="background: #000000;"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
-					<?php break; 
+						<?php break; 
 						case 'mypage':?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li class="selectedTab"><a href="" class="faa-parent animated-hover" style="background: #000000"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
-					<?php break;
+						<?php break;
 						default:?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
-					<?php break; 
+						<?php break; 
 					} ?>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="loginstyle faa-parent animated-hover"><i class="fa fa-sign-in fa-fw faa-horizontal" aria-hidden="true"></i>LogIn<b class="caret"></b></span></a>
-						<ul class="dropdown-menu" style="padding: 2px;">
-						<?php if ("ログインしてる?" == "false" || true) { ?>
-								<li>Username<input type="text" name=""></li>
-								<li>Password<input type="password" name=""></li>
-								<li><input type="submit" name="" value="Login"></li>
-						<?php }?>
-							
-						<?php if ("ログインしてる?" == "true") { ?>
-							<li><a href="#">My Page</a></li>
-							<li><a href="#">Registration</a></li>
-						<?php }?>
 
+					<?php if ("ログインしてる?" == "false" || true) { ?>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #302A26;"><span class="loginstyle faa-parent animated-hover"><i class="fa fa-sign-in fa-fw faa-horizontal" aria-hidden="true"></i>LogIn<b class="caret"></b></span></a>
+						<ul class="dropdown-menu" style="padding: 2px; background: #333; color: #FFBF00; text-align: center;">
+
+							<form>
+								<li>Username<input type="text" name="" class="square_tv" oninput="onUsername(value)" id="inputUsername"></li>
+								<li>Password<input class="square_tv" type="password" name="" oninput="onPassword(value)" id="inputPassword"></li>
+								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
+								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
+							</form>
 						</ul>
 					</li>
+					<?php }?>
+
+					<?php if ("ログインしてる?" == "true") { ?>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #302A26;"><span class="loginstyle faa-parent animated-hover"><i class="fa fa-sign-in fa-fw faa-horizontal" aria-hidden="true"></i>LogIn<b class="caret"></b></span></a>
+						<ul class="dropdown-menu" style="padding: 2px; background: #333; color: #FFBF00; text-align: center;">
+							<li><a href="#">My Page</a></li>
+							<li><a href="#">Registration</a></li>						
+						</ul>
+					</li>
+
+					<?php }?>
+
+					
 				</ul>
 
 			</div>
