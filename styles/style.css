@@ -52,3 +52,24 @@ body {
 	background: #343435;
 	color: #A8A7A9;
 }
+
+.dropdownStyle{
+padding: 2px; 
+background-color: #333; 
+color: #FFBF00; 
+text-align: center;
+}
+
+.dropdownStyle li{
+	background-color: #FFFFFF;
+	border: solid 2px #000000;
+	border-radius: 5px;
+}
+.dropdownStyle li:hover{
+	background-color: #FFFFFF;
+	border: solid 2px #000000;
+	border-radius: 5px;
+}
+
+
+
