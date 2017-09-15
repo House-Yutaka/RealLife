@@ -1,6 +1,5 @@
 <head>
 	<meta charset="utf-8">
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/boostrap/css/bootstrap.css">
 	<script src="lib/boostrap/js/bootstrap.js" ></script>
@@ -30,8 +29,10 @@
 				<ul class="nav navbar-nav">
 					<?php switch ($eTabName){
 						case 'home': ?>
+						
 						<li><a href="" class="faa-parent animated-hover" class="selectedTab" style="background: #000000;"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
+						
 						<?php break; 
 						case 'mypage':?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
@@ -55,6 +56,7 @@
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
 							</form>
+							<li class="aElement"><a href="#">Registration</a></li>	
 						</ul>
 					</li>
 					<?php }?>
