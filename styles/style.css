@@ -60,12 +60,12 @@ color: #FFBF00;
 text-align: center;
 }
 
-.dropdownStyle li{
+.dropdownStyle li .aElement{
 	background-color: #FFFFFF;
 	border: solid 2px #000000;
 	border-radius: 5px;
 }
-.dropdownStyle li:hover{
+.dropdownStyle li .aElement:hover{
 	background-color: #FFFFFF;
 	border: solid 2px #000000;
 	border-radius: 5px;

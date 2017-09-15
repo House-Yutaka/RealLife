@@ -45,7 +45,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
-					<?php if ("ログインしてる?" == "false") { ?>
+					<?php if ("ログインしてる?" == "false" || true) { ?>
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle faa-parent animated-hover"><i class="fa fa-sign-in fa-fw faa-horizontal" aria-hidden="true"></i>LogIn<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
 
@@ -59,11 +59,11 @@
 					</li>
 					<?php }?>
 
-					<?php if ("ログインしてる?" == "true" || true) { ?>
+					<?php if ("ログインしてる?" == "true") { ?>
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle">[ICON]username<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
-							<li><a href="#">My Page</a></li>
-							<li><a href="#">Registration</a></li>						
+							<li class="aElement"><a href="#">My Page</a></li>
+							<li class="aElement"><a href="#">Registration</a></li>						
 						</ul>
 					</li>
 
