@@ -30,13 +30,13 @@
 					<?php switch ($eTabName){
 						case 'home': ?>
 						
-						<li><a href="" class="faa-parent animated-hover" class="selectedTab" style="background: #000000;"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
+						<li><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
 						
 						<?php break; 
 						case 'mypage':?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
-						<li class="selectedTab"><a href="" class="faa-parent animated-hover" style="background: #000000"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
+						<li class="selectedTab"><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
 						<?php break;
 						default:?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
