@@ -56,7 +56,7 @@
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
 							</form>
-							<li class="aElement"><a href="#">Registration</a></li>	
+							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>	
 						</ul>
 					</li>
 					<?php }?>
@@ -65,7 +65,7 @@
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle">[ICON]username<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
 							<li class="aElement"><a href="#">My Page</a></li>
-							<li class="aElement"><a href="#">Registration</a></li>						
+							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>						
 						</ul>
 					</li>
 
