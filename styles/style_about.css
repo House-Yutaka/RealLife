@@ -108,12 +108,18 @@ Image credits: unsplash.com
   background-repeat: no-repeat;
 }
 .fade-carousel .slides .slide-1 {
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,0.52);
   background-image: url(../images/CIMG0388.JPG); 
 }
 .fade-carousel .slides .slide-2 {
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,0.52);
   background-image: url(../images/IMG_1592.JPG);
 }
 .fade-carousel .slides .slide-3 {
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,0.52);
   background-image: url(../images/IMG_0427.JPG);
 }
 
