@@ -27,22 +27,8 @@
 
 			<div id="Navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<?php switch ($eTabName){
-						case 'home': ?>
-						
-						<li><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
-						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
-						
-						<?php break; 
-						case 'mypage':?>
-						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
-						<li><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
-						<?php break;
-						default:?>
-						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
-						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
-						<?php break; 
-					} ?>
+					<?php include("creatingTab.php"); ?>
+
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
