@@ -1,6 +1,5 @@
 <head>
 	<meta charset="utf-8">
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/boostrap/css/bootstrap.css">
 	<script src="lib/boostrap/js/bootstrap.js" ></script>
@@ -30,16 +29,20 @@
 				<ul class="nav navbar-nav">
 					<?php switch ($eTabName){
 						case 'home': ?>
-						<li><a href="" class="faa-parent animated-hover" class="selectedTab" style="background: #000000;"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
+						
+						<li><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
+						<li><a href="upload.php" class="faa-parent animated-hover"><i class="fa fa-camera-retro fa-fw faa-ring" aria-hidden="true"></i>Upload</a></li>
 						<?php break; 
 						case 'mypage':?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
-						<li class="selectedTab"><a href="" class="faa-parent animated-hover" style="background: #000000"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
+						<li class="selectedTab"><a href="" class="faa-parent animated-hover selectedTab"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>		
+						<li class="selectedTab"><a href="upload.php" class="faa-parent animated-hover selectedTab"><i class="fa fa-camera-retro fa-fw faa-ring" aria-hidden="true"></i>Upload</a></li>		
 						<?php break;
 						default:?>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
+						<li><a href="upload.php" class="faa-parent animated-hover"><i class="fa fa-camera-retro fa-fw faa-ring" aria-hidden="true"></i>Upload</a></li>
 						<?php break; 
 					} ?>
 				</ul>
@@ -55,6 +58,7 @@
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
 							</form>
+							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>	
 						</ul>
 					</li>
 					<?php }?>
@@ -63,7 +67,7 @@
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle">[ICON]username<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
 							<li class="aElement"><a href="#">My Page</a></li>
-							<li class="aElement"><a href="#">Registration</a></li>						
+							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>						
 						</ul>
 					</li>
 
