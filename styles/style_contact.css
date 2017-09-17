@@ -1,0 +1,14 @@
+.back-style{
+text-align: center; 
+margin: 80px 0px; 
+background: rgba(243, 201, 17, 0.3); 
+border-radius: 30px; border: solid 2px #001a42;
+padding-bottom: 15px;
+}
+.form{
+    text-align: center;
+    display: inline-block;
+}
+.btn{
+    margin:15px 0px;
+}

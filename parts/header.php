@@ -27,6 +27,7 @@
 
 			<div id="Navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
+
 					<?php include("creatingTab.php"); ?>
 
 				</ul>
