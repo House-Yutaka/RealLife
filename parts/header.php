@@ -40,7 +40,6 @@
 						<li class="selectedTab"><a href="upload.php" class="faa-parent animated-hover selectedTab"><i class="fa fa-camera-retro fa-fw faa-ring" aria-hidden="true"></i>Upload</a></li>		
 						<?php break;
 						default:?>
-
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-home fa-fw faa-ring" aria-hidden="true"></i>Home</a></li>
 						<li><a href="" class="faa-parent animated-hover"><i class="fa fa-meh-o fa-fw faa-ring" aria-hidden="true"></i>Mypage</a></li>
 						<li><a href="upload.php" class="faa-parent animated-hover"><i class="fa fa-camera-retro fa-fw faa-ring" aria-hidden="true"></i>Upload</a></li>
