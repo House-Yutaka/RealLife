@@ -1,5 +1,5 @@
 <?php
-  $eTabName = 'mypage';
+  $eTabName = 'signup';
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +38,7 @@
     <div style="text-align: center; margin-top: 20px;">
     <input type="submit" value="送信">
     </div>
+    </form>
 </div>
     <div style="margin-top: 300px;">
       <?php include('parts/footer.php'); ?>
