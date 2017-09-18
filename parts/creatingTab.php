@@ -10,6 +10,7 @@
 	// それぞれのタブのリンク
 	$links = array(
 		"index.php",
+		"mypage.php",
 		"upload.php",
 		"about.php",
 		"edit.php"
