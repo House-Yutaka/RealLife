@@ -5,18 +5,19 @@
 	$selectedClass = "selectedTab";
 	
 	// タブの名前
-	$tabNames = array("Home","Mypage");
+	$tabNames = array("Home","Mypage","Upload");
 	
 	// それぞれのタブのリンク
 	$links = array(
 		"index.php",
-		"#"
+		"upload.php"
 		);
 
 	// それぞれのタブの横に出るアイコンのタグ (awesome font)
 	$iconTexts = array(
 		"<i class=\"fa fa-home fa-fw faa-ring\" aria-hidden=\"true\"></i>",
-		"<i class=\"fa fa-meh-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
+		"<i class=\"fa fa-meh-o fa-fw faa-ring\" aria-hidden=\"true\"></i>",
+		"<i class=\"fa fa-camera-retro fa-fw faa-ring\" aria-hidden=\"true\"></i>"
 		);
 
 
