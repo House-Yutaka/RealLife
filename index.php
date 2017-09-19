@@ -3,9 +3,12 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+	<link rel="stylesheet" type="text/css" href="styles/style_index.css">
+	<meta charset="utf-8">
 	<title>Real Life</title>
+	
 </head>
 <body>
 	<?php
@@ -13,7 +16,7 @@
 	?>
 	<div class="wrapper">
 			<!-- このdivたぐの中に書く -->
-
+			<h1>hitomi</h1>
 
 
 
