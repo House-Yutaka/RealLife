@@ -34,23 +34,38 @@
 			<div class="container">			
 				<div class="row">
 				<h2>投稿一覧</h2><br>
-					<div class="col-xs-3" align="left">
+					<!-- 投稿した写真＆コメントが表示される -->
+					<div class="col-xs-3">
 						<img width="180px" height="180px" src="images/IMG_1592.JPG" alt="">
 					</div>
-					<div class="col-xs-9" align="right">
-						<textarea class="contribution" required style="width: 500px; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
+					<div class="col-xs-9" align="center">
+						<textarea class="contribution" required style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
 					</div>
+					<div class="col-xs-3">
+						<img width="180px" height="180px" src="images/city.jpg" alt="">
+					</div>
+					<div class="col-xs-9" align="center">
+						<textarea class="contribution" required style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
+					</div>
+
 				</div>											
 			</div>
 
 			<div class="container">			
 				<div class="row">
 				<h2>お気に入り一覧</h2><br>
+					<!-- いいね！押した記事が表示される -->
 					<div class="col-xs-3" align="left">
 						<img width="180px" height="180px" src="images/IMG_0427.JPG" alt="">
 					</div>
-					<div class="col-xs-9" align="right">
-						<textarea class="contribution" required style="width: 500px; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
+					<div class="col-xs-9" align="center">
+						<textarea class="contribution" required style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
+					</div>
+					<div class="col-xs-3" align="left">
+						<img width="180px" height="180px" src="images/CIMG0388.JPG" alt="">
+					</div>
+					<div class="col-xs-9" align="center">
+						<textarea class="contribution" required style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>						
 					</div>
 				</div>											
 			</div>
