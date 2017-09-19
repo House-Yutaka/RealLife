@@ -1,0 +1,22 @@
+.userinfo{
+	text-align: center; 
+	margin: 80px 0px; 
+	background: rgba(243, 201, 17, 0.3); 
+	border-radius: 30px; border: solid 2px #001a42;
+	padding: 15px 0px;
+	width: 50%;
+	height: 50%;
+}
+.userpic {
+	text-align: center;
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;	
+}
+.form{
+    text-align: center;
+    display: inline-block;
+}
+
+
+
