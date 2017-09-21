@@ -65,10 +65,11 @@
     }
     ?>
 
-		<div class="container">
+
+        <div class="container">
 		<div class="change">
             <div class="row">
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-12">
                 	<div>
                 		<img alt="userpic" src="<?php echo $image; ?>"><br>
@@ -84,6 +85,7 @@
                 </div>
                 <div class="col-lg-12">
                 	<div class="form">
+                    
                         <label>Name</label><br>                        
                             <input class="form-control" type="text" name="nickname" required style="width: 300px; border: solid 2px #001a42 ">
                             <?php if(isset($errors['nickname'])){ ?>
@@ -119,11 +121,12 @@
                                     コメントを入力してください。
                                 </div>
                             <?php } ?>
-
-
-                        <button type="subimit" class="btn btn-lg">プロフィール変更</button>
+                        
+                        <input type="submit" class="btn btn-lg" value="プロフィール変更">
+                    
                     </div>                               
         		</div>
+            </form>
             </div>
         </div>
         </div>
