@@ -1,5 +1,5 @@
 <?php
-    $eTabName = '';
+    $eTabName = 'Contact';
 ?>
 
 <!DOCTYPE html>
