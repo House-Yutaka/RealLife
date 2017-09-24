@@ -1,5 +1,33 @@
 <?php
   $eTabName = 'check.php';
+
+  session_start();
+  require('../dbconnect.php');
+
+  if (!isset($_SESSION['user_info'])) {
+    header('location: signup.php');
+    exit();
+  }
+
+
+  if(!empty($POST)){
+
+    $username = $SESSION['user_info']['username'];
+    $username = $SESSION['user_info']['email'];
+    $username = $SESSION['user_info']['password'];
+    $username = $SESSION['user_info']['password2'];
+  }
+
+  $sql = 'INSERT INTO `users` SET `username`=?
+                                  `email`=?
+                                  `password`=?
+                                  `password2`=?
+                                  `created` =NOW()
+  ';
+var_dump($_SESSION['user_info']);
+$data = array()                                  
+
+
 ?>
 
 <!DOCTYPE html>
