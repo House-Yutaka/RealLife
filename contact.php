@@ -16,6 +16,7 @@
         </header>
         <div class="container" style="">
             <div class="row">
+            <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-offset-2 col-lg-8">
                     <div class="back-style">
                         <div class="row">
@@ -41,6 +42,7 @@
                     <!-- back-style -->
                 </div>
                 <div class="col-lg-offset-2"></div>
+            </form>
             </div>
             <!-- row -->
         </div>

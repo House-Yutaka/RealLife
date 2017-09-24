@@ -30,7 +30,7 @@
       <div class="slide-1"></div>
       <div class="hero">
         <hgroup>
-            <h1>あなたの”as usual”が誰かの”something special”に</h1>        
+            <h1>Living is not breathing but exploring!</h1>        
             <h3>リアル現地情報共有サイト</h3>
         </hgroup>
         <!-- <button class="btn btn-hero btn-lg" role="button">See all features</button> -->
@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="text-center text-primary">ゆたかさんち</h1>
-                        <!-- <p class="text-center">We are a group of skilled individuals</p> -->
+                        <p class="text-center">Member</p>
                     </div>
                 </div>
                 <div class="row">
@@ -85,7 +85,7 @@
                         <!-- <small> Web Designer</small></h3> -->
                     </div>
                     <div class="col-md-4">
-                        <img src="https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?q=75&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55"
+                        <img src="images/IMG_0642.JPG"
                         class="center-block img-quadrata">
                         <h3 class="text-center">Saki
                         <br/>
@@ -101,7 +101,7 @@
                         <!-- <small> Content manager</small></h3> -->
                     </div>
                      <div class="col-md-6">
-                        <img src="https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?q=75&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55"
+                        <img src="images/1000106130_4.jpg"
                         class="center-block img-quadrata">
                         <h3 class="text-center">Tomo-emon
                         <br/>

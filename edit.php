@@ -72,9 +72,9 @@
             <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-12">
                 	<div>
-                		<img alt="userpic" src="<?php echo $image; ?>"><br>
+                		<img alt="userpic" src="<?php echo $image; ?>"><br><br>
                         <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
-                        <br>
+                        <br><br>
                         <?php if(isset($errors['profile_image_path'])){ ?>
                             <div class="alert alert-danger">
                             使用できる拡張子はjpgまたはpngまたはgifのみです。
