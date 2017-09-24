@@ -3,6 +3,8 @@
 ?>
 <?php 
 
+  session_start();
+// 各入力項目の設定、検証
     $username = '';
     $email = '';
     $password = '';
@@ -13,30 +15,39 @@ if(!empty($_POST)){
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $password2 = $_POST['password'];
+  $password2 = $_POST['password2'];
   
   $errors = array();
 
+  // usernameの検証
   if ($username == '') {
     $errors['username'] = 'blank';
   }
-  // emailの
+  // emailの検証
   if ($email == '') {
     $errors['email'] = 'blank';
   }elseif (!preg_match("/[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+@[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+/" , $email) ) {
     $regist_error .= "正しいemailアドレスを入力してください。<br />";
   }
+  // password検証
   if ($password == '') {
     $errors['password'] = 'blank';
   }elseif (strlen($password) < 6){
     //パスワードは６文字以上入力
       $errors['password'] = 'length';
   }
-  if ($password2 != 'password') {
-    $errors['password2'] = 'blank';
-  }
+  //password2をpasswordの合致確認
+   if($password!=$password2){
+        $errors['password2'] = 'notSame';
+    }
 
   if (empty($errors)) {
+
+    $SESSION['user_info']['username'] = $username;
+    $SESSION['user_info']['email'] = $email;
+    $SESSION['user_info']['password'] = $password;
+    $SESSION['user_info']['password2'] = $password2;
+
     //check.phpに飛ぶ
     header('location: check.php');
     exit();
@@ -56,6 +67,7 @@ if(!empty($_POST)){
   <?php
   include('parts/header.php');
   ?>
+  <!-- 枠組みの作成 -->
   <div class="wrapper">
       <!-- このdivたぐの中に書く -->
     <div class="container">
@@ -97,13 +109,10 @@ if(!empty($_POST)){
                               <!-- パスワード再入力 -->
                             <label>Retype Password</label><br>
                           <input type="password" name="password2" maxlength="8" class="text"><br>
-                              <?php if(isset($errors["password2"]) && $errors['password2'] == 'blank') { ?>
-                                <div class="alert alert-danger">
-                                  Passwordを入力してください
-                                </div>
-                              <?php }elseif (isset($errors['password2']) && $errors['password2'] == 'length'){ ?>
-                                  <div class="alert alert-danger">パスワードが違います</div>
-                              <?php } ?>
+                          <?php if (isset($errors['password2']) && $errors['password2'] == 'notSame'){ ?>
+                                  <div class="alert alert-danger">確認用のパスワードと一致しません</div>
+                          <?php } ?>
+
 
           </div>
                 <div style="text-align: center; margin-top: 20px;">
