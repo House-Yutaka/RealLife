@@ -13,15 +13,21 @@
   ?>
   <div class="wrapper">
       <!-- このdivたぐの中に書く -->
-        <div style="text-align: center;">
-          <h1>
-           Thank You Friends!!<br>
-           Let's Find Favorit Place!!<br>
-          </h1>
+      <div class="container" align="center">
+        <div class="row">
+          <div style="  text-align: center; margin: 80px 0px; background: rgba(243, 201, 17, 0.3); border-radius: 30px; border: solid 2px #001a42; padding: 15px 0px; width: 50%; height: 50%;" align="center">
+              <div>
+                <h1>
+                 Thank You Friends!!<br>
+                 Let's Find Favorit Place!!<br>
+                </h1>
+              </div>
+              <div>
+                <a href="index.php"><button >TOP</button></a>
+              </div>
+          </div>
         </div>
-  <div style="text-align: center;">
-    <a href="index.php"><button>TOP</button></a>
-  </div>
+      </div>
 
 
 

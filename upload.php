@@ -6,7 +6,7 @@ $eTabName = 'Upload';
 <html>
 <head>
   <title>Real Life</title>
-  <link rel="stylesheet" type="text/css" href="styles/">
+  <link rel="stylesheet" type="text/css" href="styles/style_upload.css">
   <script type="text/javascript" src="scripts/upload.js"></script>
 </head>
 <body>
@@ -15,14 +15,15 @@ $eTabName = 'Upload';
   ?>
   <div class="wrapper">
     <!-- このdivたぐの中に書く -->
-    <div class="container">
+    <div class="container" align="center">
+          <div class="">
       <div class="row">
         <div class="col-lg-12">
-          <div class="">
-            <form>
+            <form method="POST">
               <div class="imgInput">
                 <input type="file" name="file1">
               </div><!--/.imgInput-->
+              <p form="text"></p>
               <p>
                 <label form="coment">Coment</label><br>
                 <textarea  cols="50" name="coment" rows="8"></textarea>
@@ -30,7 +31,7 @@ $eTabName = 'Upload';
             </div>
             <p style="margin: 0px;">評価: <span id="eva_tv">0.0</span> / 5.0</p>
             <input type="range" value="0" name="eva" style="width: 250px;" onchange="onEva_change(value)" oninput="onEva_in(value)">
-            <input type="submit" value="upload">
+            <input type="submit" value="upload" style="margin-top: 20px;">
           </form>
       </div>
     </div>

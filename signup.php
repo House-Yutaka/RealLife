@@ -43,10 +43,10 @@ if(!empty($_POST)){
 
   if (empty($errors)) {
 
-    $SESSION['user_info']['username'] = $username;
-    $SESSION['user_info']['email'] = $email;
-    $SESSION['user_info']['password'] = $password;
-    $SESSION['user_info']['password2'] = $password2;
+    $_SESSION['user_info']['username'] = $username;
+    $_SESSION['user_info']['email'] = $email;
+    $_SESSION['user_info']['password'] = $password;
+    $_SESSION['user_info']['password2'] = $password2;
 
     //check.phpに飛ぶ
     header('location: check.php');
@@ -117,6 +117,7 @@ if(!empty($_POST)){
           </div>
                 <div style="text-align: center; margin-top: 20px;">
                   <a href="check.php"><input type="submit" value="確認画面へ"></a>  
+                  <button type="reset">リセット</button>
                 </div>
             </form>
           </div>
