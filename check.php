@@ -2,7 +2,7 @@
   $eTabName = 'check.php';
 
   session_start();
-  require('parts/dbconnect.php');
+  require('parts/db_connect.php');
 
   if (!isset($_SESSION['user_info'])) {
     header('location: signup.php');
@@ -21,10 +21,9 @@
   $sql = 'INSERT INTO `users` SET `username`=?
                                   `email`=?
                                   `password`=?
-                                  `password2`=?
                                   `created` =NOW()
   ';
-    var_dump($_SESSION['user_info']);
+    // var_dump($_SESSION['user_info']);
     $data = array($username,$email,$password,$password2);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
