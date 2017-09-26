@@ -5,7 +5,7 @@
 	$selectedClass = "selectedTab";
 	
 	// タブの名前
-	$tabNames = array("Home","Mypage","Upload","About","Edit","Contact");
+	$tabNames = array("Home","Mypage","Upload","About","Edit","Contact","Timeline");
 	
 	// それぞれのタブのリンク
 	$links = array(
@@ -14,7 +14,8 @@
 		"upload.php",
 		"about.php",
 		"edit.php",
-		"contact.php"
+		"contact.php",
+		"timeline.php"
 		);
 
 	// それぞれのタブの横に出るアイコンのタグ (awesome font)
@@ -25,7 +26,8 @@
 		"<i class=\"fa fa-info fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-pencil-square-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
 			,
-		"<i class=\"fa fa-question fa-fw faa-ring\" aria-hidden=\"true\"></i>"
+		"<i class=\"fa fa-question fa-fw faa-ring\" aria-hidden=\"true\"></i>",
+		"<i class=\"fa fa-clock-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
 		);
 
 
