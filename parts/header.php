@@ -38,7 +38,7 @@
 						<ul class="dropdown-menu dropdownStyle">
 
 							<form>
-								<li>Username<input type="text" name="" class="square_tv" oninput="onUsername(value)" id="inputUsername"></li>
+								<li>Email<input type="text" name="" class="square_tv" oninput="onUsername(value)" id="inputUsername"></li>
 								<li>Password<input class="square_tv" type="password" name="" oninput="onPassword(value)" id="inputPassword"></li>
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
