@@ -18,13 +18,14 @@
     $password2 = $_SESSION['user_info']['password2'];
   
 
-  $sql = 'INSERT INTO `users` SET `username`=?
-                                  `email`=?
-                                  `password`=?
+  $sql = 'INSERT INTO `users` SET `username`=?,
+                                  `email`=?,
+                                  `password`=?,
+                                  `user_icon`=?,
                                   `created` =NOW()
   ';
     // var_dump($_SESSION['user_info']);
-    $data = array($username,$email,$password,$password2);
+    $data = array($username,$email,$password,$user_icon);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
     header('location: complete.php');
