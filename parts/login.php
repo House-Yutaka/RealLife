@@ -13,6 +13,8 @@ if (!empty($_POST)) {
 
     if ($email == '') {
         $errors['email'] = 'blank';
+      }elseif (!preg_match("/[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+@[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+/" , $email) ) {
+    $regist_error .= "正しいemailアドレスを入力してください。<br />";
       }
       if ($password == '') {
         $errors['password'] = 'blank';

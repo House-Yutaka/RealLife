@@ -1,9 +1,17 @@
 <?php
   $eTabName = 'signup';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>会員登録</title>
+<link rel="stylesheet" type="text/css" href="styles/style_signup.css">
+</head>
+<body>
+  <?php
+  include('parts/header.php');
+  ?>
 <?php 
-
-  session_start();
 // 各入力項目の設定、検証
     $username = '';
     $email = '';
@@ -53,19 +61,8 @@ if(!empty($_POST)){
   }
 }
 
-
  ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>会員登録</title>
-<link rel="stylesheet" type="text/css" href="styles/style_signup.css">
-</head>
-<body>
-  <?php
-  include('parts/header.php');
-  ?>
   <!-- 枠組みの作成 -->
   <div class="wrapper">
       <!-- このdivたぐの中に書く -->

@@ -1,3 +1,7 @@
+<?php 
+	include('parts/login.php');
+ ?>
+
 <head>
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -20,7 +24,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button> 
-				<a class="navbar-brand faa-parent animated-hover" style="color: #FFBF00;" href="index.php"><i class="fa fa-globe fa-fw faa-spin" aria-hidden="true" style="font-size: 20px;"></i>RealLife</a>
+				<a class="navbar-brand faa-parent animated-hover" style="color: #FFBF00;" href="index.php"><i class="fa fa-globe fa-fw faa-spin" aria-hidden="true" style="font-size: 20px;"></i>SEEGO</a>
 			</div>
 
 
