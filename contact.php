@@ -30,6 +30,7 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
     <div class="wrapper">
         <div class="container" style="">
             <div class="row">
-            <form method="POST" action="complete.php" enctype="multipart/form-data">
+            <form method="POST" action="complete.php" enctype="multipart/form-data" target="_top" onSubmit="return startConfirm()">
                 <div class="col-lg-offset-2 col-lg-8">
                     <div class="back-style">
 
@@ -95,14 +96,14 @@
         <!-- container -->
     </div>
     <script type="text/javascript">
-        function contact(){
+        function startConfirm(){
             var nick = $('#nick').val();
             var email = $('#email').val();
             var content = $('#content').val();
-            var hoge = "Nickname:"  + nick + "\nEmail:" + email + "\nContent" + content + "\n上記の情報で送信してもよろしいでしょうか。";
+            var hoge = "Nickname:"  + nick + "\nEmail:" + email + "\nContent:" + content + "\n上記の情報で送信してもよろしいでしょうか。";
 
             if (nick !="" && email.match(/@/) && email !="" && content !="") {
-                confirm(hoge);                 
+                return(confirm(hoge));                 
             } else {
                if (nick =="" || email =="" || content =="") {
                 alert("入力項目を全て入力してください。");
