@@ -5,30 +5,25 @@
   require('parts/db_connect.php');
 
   if (!isset($_SESSION['user_info'])) {
-    header('location: signup.php');
+    header('Location: signup.php');
     exit();
   }
 
-
-  if(!empty($POST)){
+  // 登録ボタンを押したら処理開始
+  if(!empty($_POST)){
 
     $username = $_SESSION['user_info']['username'];
     $email = $_SESSION['user_info']['email'];
     $password = $_SESSION['user_info']['password'];
-    $password2 = $_SESSION['user_info']['password2'];
   
 
-  $sql = 'INSERT INTO `users` SET `username`=?,
-                                  `email`=?,
-                                  `password`=?,
-                                  `user_icon`=?,
-                                  `created` =NOW()
-  ';
+  $sql = 'INSERT INTO `seego_users` SET `username`=?,`email`=?,`password`=?,`created` =NOW()';
     // var_dump($_SESSION['user_info']);
-    $data = array($username,$email,$password,$user_icon);
+
+    $data = array($username,$email,sha1($password));
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
-    header('location: complete.php');
+    header('Location: complete.php');
     exit();                                  
 }
 
@@ -62,7 +57,10 @@
                     <form method="POST" action="signup.php">
                         <input type="submit" value="やり直す">
                     </form>
-                    <form method="POST" action="complete.php"><input type="submit" value="送信"></form>
+                    <form method="POST" action="">
+                        <input type="hidden" name="action" value="submit">
+                        <input type="submit" value="登録">
+                    </form>
                 </div> 
             </div> 
           </div>

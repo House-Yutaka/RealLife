@@ -1,5 +1,5 @@
 <?php
-  $eTabName = 'comlete';
+  $eTabName = 'complete';
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,9 @@
                  Let's Find Favorit Place!!<br>
                 </h1>
               </div>
-              <div>
-                <a href="index.php"><button >TOP</button></a>
-              </div>
+              <form method="POST" action="index.php">
+              <input type="submit" class="btn btn-lg" value="SEEGO!">
+              </form>
           </div>
         </div>
       </div>
