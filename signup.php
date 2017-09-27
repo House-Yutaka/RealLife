@@ -46,10 +46,9 @@ if(!empty($_POST)){
     $_SESSION['user_info']['username'] = $username;
     $_SESSION['user_info']['email'] = $email;
     $_SESSION['user_info']['password'] = $password;
-    $_SESSION['user_info']['password2'] = $password2;
 
     //check.phpに飛ぶ
-    header('location: check.php');
+    header('Location: check.php');
     exit();
   }
 }
@@ -110,7 +109,7 @@ if(!empty($_POST)){
                             <label>Retype Password</label><br>
                           <input type="password" name="password2" maxlength="8" class="text"><br>
                           <?php if (isset($errors['password2']) && $errors['password2'] == 'notSame'){ ?>
-                                  <div class="alert alert-danger">確認用のパスワードと一致しません</div>
+                                  <div class="alert alert-danger">パスワードが一致しません</div>
                           <?php } ?>
 
 

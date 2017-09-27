@@ -1,5 +1,5 @@
 <?php
-	$eTabName = 'timeline';
+	$eTabName = 'Timeline';
 ?>
 
 <!DOCTYPE html>
