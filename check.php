@@ -32,7 +32,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>最終確認</title>
+  <title>CheckPage</title>
 </head>
 <link rel="stylesheet" type="text/css" href="styles/style_check.css">
 <body>

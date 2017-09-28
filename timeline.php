@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="styles/style_timeline.css">
 <script type="text/javascript" src="scripts/prototype.js"></script>
-	<title>SEEGO</title>
+	<title>TimeLine</title>
 </head>
 <body>
 	<?php
@@ -75,7 +75,6 @@
                     }
                   $data[]=$record;
                 }
-           
               for($i=0;$i<=5;$i++){ ?>
                 <div class="chat-message">
 

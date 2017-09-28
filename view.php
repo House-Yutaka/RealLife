@@ -28,7 +28,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" href="styles/style_view.css">
-	<title>Real Life</title>
+	<title>SEEGO</title>
 </head>
 <body>
 	<?php

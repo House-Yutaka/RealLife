@@ -5,7 +5,7 @@ $eTabName = 'Upload';
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Real Life</title>
+  <title>PicUpLoad</title>
   <link rel="stylesheet" type="text/css" href="styles/style_upload.css">
   <script type="text/javascript" src="scripts/upload.js"></script>
 </head>

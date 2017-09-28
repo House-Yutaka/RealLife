@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>会員登録</title>
+  <title>SignUp</title>
 <link rel="stylesheet" type="text/css" href="styles/style_signup.css">
 </head>
 <body>
