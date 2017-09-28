@@ -56,7 +56,7 @@
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle">[ICON]username<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
 							<li class="aElement"><a href="#">My Page</a></li>
-							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>						
+							<li class="aElement"><a href="/SEEGO/signup.php">Registration</a></li>						
 						</ul>
 					</li>
 
