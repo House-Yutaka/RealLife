@@ -47,7 +47,7 @@
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
 							</form>
-							<li class="aElement"><a href="/RealLife/signup.php">Registration</a></li>	
+							<li class="aElement"><a href="/SEEGO/signup.php">Registration</a></li>	
 						</ul>
 					</li>
 					<?php }?>
