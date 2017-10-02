@@ -1,7 +1,9 @@
 <?php 
 // セッションを使う場合はsession_start();を記述する
-session_start();
-require('db_connect.php');
+if ($_POST) {
+  # code...
+
+include('db_connect.php');
 
 // バリデーション処理のエラーチェック
 $errors = array();
@@ -14,7 +16,7 @@ if (!empty($_POST)) {
     if ($email == '') {
         $errors['email'] = 'blank';
       }elseif (!preg_match("/[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+@[0-9a-z!#\$%\&'\*\+\/\=\?\^\|\-\{\}\.]+/" , $email) ) {
-    $regist_error .= "正しいemailアドレスを入力してください。<br />";
+    $regist_error .= "emailが違います<br />";
       }
       if ($password == '') {
         $errors['password'] = 'blank';
@@ -53,5 +55,5 @@ if (!empty($_POST)) {
 
 
 }
-
+}
  ?>
