@@ -26,8 +26,23 @@
             if($content == ''){
                 $errors['content'] = 'blank';
             }
-        }
+            if(empty($errors)){
 
+                $dsn = 'mysql:dbname=seego;host=localhost';
+                $user = 'root';
+                $password = '';
+                $dbh = new PDO($dsn, $user, $password);
+                $dbh->query('SET NAMES utf8');
+
+                $sql = 'INSERT INTO `seego_contact` SET `nickname`=?,`email`=?,`content`=?';
+                $data = array($nickname, $email, $content);
+                $stmt = $dbh->prepare($sql);
+                $stmt->execute($data);
+                $dbh = null;
+                header('Location: complete.php');
+                exit();
+            }
+        }
 ?>
 
 
@@ -44,7 +59,7 @@
     <div class="wrapper">
         <div class="container" style="">
             <div class="row">
-            <form method="POST" action="complete.php" enctype="multipart/form-data" target="_top" onSubmit="return startConfirm()">
+            <form method="POST" action="" enctype="multipart/form-data" target="_top" onSubmit="return startConfirm()">
                 <div class="col-lg-offset-2 col-lg-8">
                     <div class="back-style">
 
