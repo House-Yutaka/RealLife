@@ -5,11 +5,11 @@
   session_start();
   require('parts/db_connect.php');
 
-  // if (!isset($_SESSION['user_info'])) {
-  //   //一度も入力せずに飛んだ人は登録画面へ飛ばす。
-  //   header('Location: signup.php');
-  //   exit();
-  // }
+   if (!isset($_SESSION['seego_info'])) {
+     //一度も入力せずに飛んだ人は登録画面へ飛ばす。
+     header('Location: signup.php');
+     exit();
+   }
 
   // ユーザー登録ボタンが押されたら下記の処理を実行
   if (!empty($_POST)) {
@@ -17,9 +17,9 @@
          // var_dump($_POST);
          echo 'POST送信しました';
 
-      $adress = $_SESSION['user_info']['address'];
-      $text = $_SESSION['user_info']['text'];
-      $picture_path = $_SESSION['user_info']['profile_image_path'];
+      $address = $_SESSION['seego_info']['address'];
+      $text = $_SESSION['seego_info']['text'];
+      $picture_path = $_SESSION['seego_info']['profile_image_path'];
 
       // $_POSTの代わりに$_SESSIONがすべてのデータ（ユーザーが入力したデータ）を保持している
       // INSERT処理 （usersテーブルにデータを登録します）
@@ -29,7 +29,7 @@
                                       `picture_path`=?,
                                       `created` =NOW()
       ';
-       // var_dump($_SESSION['user_info']);
+       // var_dump($_SESSION['seego_info']);
 
       $data = array($user_id,$address,$text,$picture_path);
       $stmt = $dbh->prepare($sql);
@@ -48,12 +48,13 @@
    <title></title>
  </head>
  <body>
-  <div">
+  <div>
     下記の情報で登録してもよろしいでしょうか。
     <br>
-      <img src="images/ex_view_images/<?php echo $_SESSION['user_info']['profile_image_path'] ?>" width="150">   
-      住所:<?php echo $_SESSION['user_info']['address']; ?><br>
-      コメント:<?php echo $_SESSION['user_info']['text']; ?><br>
+      <img src="images/ex_view_images/<?php echo $_SESSION['seego_info']['profile_image_path'] ?>" width="350">
+      <br>
+      <div>住所:<?php echo $_SESSION['seego_info']['address'];?></div><br>
+      コメント:<?php echo $_SESSION['seego_info']['text']; ?><br>
   </div>
   <div>
     <form method="POST" action="">

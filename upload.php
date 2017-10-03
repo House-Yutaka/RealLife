@@ -15,7 +15,7 @@ $eTabName = 'Upload';
   ?>
 <?php 
 // 各入力項目の設定、検証
-
+session_start();
     $text = '';
     $address = '';
 
@@ -73,13 +73,13 @@ if(!empty($_POST)){
         // データを一時的に保存する
         // 一時的なものなので長期間は保存できないので注意が必要
         // $_SESSION['user_info']['user_id'] = $user_id;
-        $_SESSION['user_info']['address'] = $address;
-        $_SESSION['user_info']['text'] = $text;
-        $_SESSION['user_info']['eva'] = $_POST['eva'];
-        $_SESSION['user_info']['profile_image_path'] = $fileName;
+        $_SESSION['seego_info']['address'] = $address;
+        $_SESSION['seego_info']['text'] = $text;
+        $_SESSION['seego_info']['eva'] = $_POST['eva'];
+        $_SESSION['seego_info']['profile_image_path'] = $fileName;
 
     //check.phpに飛ぶ
-    header('Location: upload_check.php');
+    header('location: upload_check.php');
     exit();
   }
  }
@@ -93,7 +93,7 @@ if(!empty($_POST)){
         <div class="row">
           <div class="col-lg-12">
             <form method="POST" action="" enctype="multipart/form-data" accept="image/*">
-                <div style="height: 650px;" class="imgInput">
+                <div style="height: 600px;" class="imgInput">
                   <input type="file" name="profile_image_path" class="btn btn-sm" value="<?php echo $filename; ?>">
                 </div><!--/.imgInput-->
             <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
@@ -107,7 +107,7 @@ if(!empty($_POST)){
 
             <!-- コメントの入力 -->
                 <p>
-                  <label form="comment"　>コメント</label><br>
+                  <label>コメント</label><br>
                   <input type="text" name="text" value="<?php echo $text; ?>">
                     <?php if(isset($errors['text'])){ ?>
                       <div class="alert alert-danger">
@@ -133,7 +133,7 @@ if(!empty($_POST)){
               <input type="range" value="0" name="eva" style="width: 250px;" onchange="onEva_change(value)" oninput="onEva_in(value)">
 
               <!-- 投稿ボタン -->
-              <input type="submit" value="確認画面へ" style="margin-top: 20px;">
+              <input type="submit" name="確認画面へ" style="margin-top: 20px;">
               </form>
           </div>
         </div>

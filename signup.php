@@ -12,6 +12,7 @@
   include('parts/header.php');
   ?>
 <?php 
+session_start();
 // 各入力項目の設定、検証
     $username = '';
     $email = '';
@@ -51,9 +52,9 @@ if(!empty($_POST)){
 
   if (empty($errors)) {
 
-    $_SESSION['user_info']['username'] = $username;
-    $_SESSION['user_info']['email'] = $email;
-    $_SESSION['user_info']['password'] = $password;
+    $_SESSION['seego_info']['username'] = $username;
+    $_SESSION['seego_info']['email'] = $email;
+    $_SESSION['seego_info']['password'] = $password;
 
     //check.phpに飛ぶ
     header('Location: check.php');
