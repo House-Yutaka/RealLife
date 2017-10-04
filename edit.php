@@ -2,6 +2,37 @@
 	$eTabName = 'Edit';
 ?>
 
+<!-- mypage同様アイコン写真はどこで登録？
+ログイン状態のチェック不可 -->
+
+<?php
+    session_start();
+    require('parts/db_connect.php');
+
+    // ログイン状態かチェック
+    // if(!isset($_SESSION['seego_info']['id'])){
+    //  header('Location: index.php');
+    //  exit();
+    // }
+
+    if(isset($_SESSION['seego_info']['id'])){
+
+        $sql = 'SELECT * FROM `seego_users` WHERE `id`=?';
+        $data = array($_SESSION['seego_info']['id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+        header('Location: edit.php');
+        exit();
+    }
+
+               
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +46,11 @@
 	<div class="wrapper">
     
     <?php
-    $image = 'images/tomtom.jpg';
+    $image = 'images/images.png';
     $nickname = '';
     $email = '';
     $password = '';
-    $content = '';
+    
 
     if(!empty($_POST)){
 
@@ -44,9 +75,6 @@
             $errors['password'] = 'length';
         }
 
-        if($content == ''){
-            $errors['content'] = 'blank';
-        }
 
     $fileName = $_FILES['profile_image_path']['name'];
         
@@ -114,13 +142,7 @@
                                 </div>
                             <?php } ?> 
 
-                        <label>一言</label><br>                       
-                            <textarea class="form-control" name="content" rows="10" required style="width: 300px; border: solid 2px #001a42 "></textarea>
-                            <?php if(isset($errors['content'])){ ?>
-                                 <div class="alert alert-danger">
-                                    コメントを入力してください。
-                                </div>
-                            <?php } ?>
+                        
                         
                         <input type="submit" class="btn btn-lg" value="プロフィール変更">
                     
