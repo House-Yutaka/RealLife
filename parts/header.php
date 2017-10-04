@@ -1,5 +1,5 @@
 <?php 
-	require ('parts/login.php');
+	include ('parts/login.php');
  ?>
 
 <head>
