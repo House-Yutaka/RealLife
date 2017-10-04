@@ -3,7 +3,7 @@
   // セッションを使うためのおまじない
   // データを一時的に保存する為にsession_start()関数を使用する
   session_start();
-  require('parts/db_connect.php');
+  
 
    if (!isset($_SESSION['seego_info'])) {
      //一度も入力せずに飛んだ人は登録画面へ飛ばす。
@@ -11,11 +11,14 @@
      exit();
    }
 
+  
   // ユーザー登録ボタンが押されたら下記の処理を実行
   if (!empty($_POST)) {
         //データ登録確認
          // var_dump($_POST);
          echo 'POST送信しました';
+
+      require('parts/db_connect.php');
 
       $address = $_SESSION['seego_info']['address'];
       $text = $_SESSION['seego_info']['text'];
@@ -31,7 +34,7 @@
       ';
        // var_dump($_SESSION['seego_info']);
 
-      $data = array($user_id,$address,$text,$picture_path);
+      $data = array($_SESSION['seego_info'],$address,$text,$picture_path);
       $stmt = $dbh->prepare($sql);
       $stmt->execute($data);
       header('Location: mypage.php');

@@ -16,6 +16,12 @@ $eTabName = 'Upload';
 <?php 
 // 各入力項目の設定、検証
 session_start();
+   if (!isset($_SESSION['seego_info'])) {
+     //一度も入力せずに飛んだ人は登録画面へ飛ばす。
+     header('Location: signup.php');
+     exit();
+   }
+
     $text = '';
     $address = '';
 

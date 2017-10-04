@@ -24,6 +24,8 @@
 							<input class="form-control" type="text" name="nickname" required style="width: 300px; border: solid 2px #001a42 ">
 							<label>一言</label><br>                       
                             <textarea class="form-control" name="content" rows="10" required style="width: 300px; border: solid 2px #001a42 "></textarea>
+           <a href="signup.php" class="btn btn-danger btn-xs">ログアウト</a>
+
 						</div>	
 						</div>						
 					</div>					

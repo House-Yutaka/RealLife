@@ -2,7 +2,7 @@
 // セッションを使う場合はsession_start();を記述する
 if ($_POST) {
   # code...
-
+session_start();
 include('db_connect.php');
 
 // バリデーション処理のエラーチェック
