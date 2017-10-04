@@ -58,8 +58,8 @@
 	     					<h2><?php echo $_SESSION['seego_info']['username']; ?></h2>
 	  					 </div>
 						 <div>
-	 					  <a href="edit.php" type="button"><i class="fa fa-edit"></i>Edit</a>
-	 					  <a href="signup.php" type="button"><i class="fa sign-out"></i>LogOut</a>
+	 					  <a href="edit.php" type="button"><i class="fa fa-edit"></i>Edit</a><br>
+	 					  <a href="signup.php" type="button"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a>
 						 </div>
 					</div>
 				</div>
