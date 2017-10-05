@@ -1,4 +1,4 @@
-// HTML要素を変換
+          // HTML要素を変換
           var mapDiv = document.getElementById( "map-canvas" ) ;
           // 下記がアクセス時に反映される場所と解像度
           var map = new google.maps.Map( mapDiv, {
@@ -6,7 +6,23 @@
               zoom: 5 ,
           });
 
-          function getLatLng(place) {
+          // function getLatLng2(){
+            // var address = database
+            // for(){
+            //   getLatLng(address);
+            // }
+          //   getLatLng('大阪府');
+          //   getLatLng('埼玉県')
+          // }
+
+          // var contentStr = '<div style="width: 80px; height: 80px;">'
+          //  + '<p><a href="index.html"><img src="images/<?php echo json_encode getContent(picture[i]); ?>"/ width="70"></a></p>';
+
+
+          function getLatLng(place,pic) {
+           //  contentStr = '<div style="width: 80px; height: 80px;">'
+           // + '<p><a href="index.html"><img src="images/' + pic + '" width="70"></a></p>';
+
               // ジオコーダのコンストラクタ
               var geocoder = new google.maps.Geocoder();
               // geocodeリクエストを実行。
@@ -23,23 +39,39 @@
             
                       // 緯度経度を取得
                       var latlng = results[i].geometry.location;
+
                       // 住所を取得
                       var address = results[i].formatted_address.replace(/^日本, /, '');
                       bounds.extend(latlng);
             
-                      new google.maps.InfoWindow({
-                        content: address + "<br>(Lat, Lng) = " + latlng.toString()
-                      }).open(map, new google.maps.Marker({
+                      var infowindow = new google.maps.InfoWindow({
+                        content: pic
+                      });
+
+
+
+
+
+
+                      var positionMaker = new google.maps.Marker({
                         position: latlng,
                         map: map
-                      }));
+                      });
+                      
+                      // infowindow.open(map, new google.maps.Marker({
+                      //   position: latlng,
+                      //   map: map
+                      // }));
+                      google.maps.event.addDomListener(positionMaker,"click", function(){
+                      infowindow.open(map,positionMaker);
+                      });
                     }
                   }
             
                   // 範囲を移動
                   map.fitBounds(bounds);
                   // ズーム値を手動で設定
-                  map.setZoom(17);
+                  map.setZoom(4);
             
                 } else if (status == google.maps.GeocoderStatus.ERROR) {
                   alert("GoogleMap 通信エラー 505");
