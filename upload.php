@@ -1,26 +1,15 @@
 <?php
 $eTabName = 'Upload';
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>PicUpLoad</title>
-  <link rel="stylesheet" type="text/css" href="styles/style_upload.css">
-  <script type="text/javascript" src="scripts/upload.js"></script>
-</head>
-<body>
-  <?php
-  include('parts/header.php');
-  ?>
 <?php 
 // 各入力項目の設定、検証
-session_start();
-   if (!isset($_SESSION['seego_info'])) {
-     //一度も入力せずに飛んだ人は登録画面へ飛ばす。
-     header('Location: signup.php');
-     exit();
-   }
+  session_start();
+
+   // if (!isset($_SESSION['seego_info'])) {
+   //   //一度も入力せずに飛んだ人は登録画面へ飛ばす。
+   //   header('Location: signup.php');
+   //   exit();
+   // }
 
     $text = '';
     $address = '';
@@ -92,6 +81,18 @@ if(!empty($_POST)){
 }
  ?>
 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PicUpLoad</title>
+  <link rel="stylesheet" type="text/css" href="styles/style_upload.css">
+  <script type="text/javascript" src="scripts/upload.js"></script>
+</head>
+<body>
+  <?php
+  include('parts/header.php');
+  ?>
   <div class="wrapper">
     <!-- このdivたぐの中に書く -->
     <div class="container" align="center">

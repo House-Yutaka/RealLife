@@ -2,7 +2,6 @@
 
   // セッションを使うためのおまじない
   // データを一時的に保存する為にsession_start()関数を使用する
-  session_start();
   
 
    if (!isset($_SESSION['seego_info'])) {
@@ -10,6 +9,7 @@
      header('Location: signup.php');
      exit();
    }
+  session_start();
 
   
   // ユーザー登録ボタンが押されたら下記の処理を実行
@@ -26,15 +26,10 @@
 
       // $_POSTの代わりに$_SESSIONがすべてのデータ（ユーザーが入力したデータ）を保持している
       // INSERT処理 （usersテーブルにデータを登録します）
-      $sql = 'INSERT INTO `seego_pictures` SET `user_id`=?,
-                                      `address`=?,
-                                      `text`=?,
-                                      `picture_path`=?,
-                                      `created` =NOW()
-      ';
+      $sql = 'INSERT INTO `seego_pictures` SET `user_id`=?,`address`=?,`text`=?,`picture_path`=?,`created` =NOW()';
        // var_dump($_SESSION['seego_info']);
 
-      $data = array($_SESSION['seego_info'],$address,$text,$picture_path);
+      $data = array($_SESSION['seego_info'],$user_id,$address,$text,$picture_path);
       $stmt = $dbh->prepare($sql);
       $stmt->execute($data);
       header('Location: mypage.php');
