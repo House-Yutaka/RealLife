@@ -1,5 +1,7 @@
 <?php
 $eTabName = 'Home';
+	session_start();
+
 
 require('parts/db_connect.php');
 

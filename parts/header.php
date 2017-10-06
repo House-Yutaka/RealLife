@@ -37,32 +37,31 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
-					<?php if ("ログインしてる?" == "false" || true) { ?>
+					<?php if (!$_SESSION['login_user']) { ?>
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle faa-parent animated-hover"><i class="fa fa-sign-in fa-fw faa-horizontal" aria-hidden="true"></i>LogIn<b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
 
-							<form>
-								<li>Email<input type="text" name="" class="square_tv" oninput="onUsername(value)" id="inputUsername"></li>
-								<li>Password<input class="square_tv" type="password" name="" oninput="onPassword(value)" id="inputPassword"></li>
+							<form action="" method="post">
+								<li>Email<input type="text" name="email" class="square_tv" oninput="onUsername(value)" id="inputUsername"></li>
+								<li>Password<input class="square_tv" type="password" name="password" oninput="onPassword(value)" id="inputPassword"></li>
 								<input type="submit" name="submit" style="display: none;" onchange="$('#fake_submit').val($(this).val())" value="send" id="Submit" disabled>
 								<button id="fake_submit" onClick="$('#submit').click();" class="square_btn" disabled><i id="submitIcon" class="fa fa-sign-in fa-lg faa-horizontal fa-fw" aria-hidden="true"></i>Log in</button>
 							</form>
-							<li class="aElement"><a href="/SEEGO/signup.php">Registration</a></li>	
+							<li class="aElement"><a href="signup.php">Registration</a></li>	
 						</ul>
 					</li>
 					<?php }?>
 
-					<?php if ("ログインしてる?" == "true") { ?>
-					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle">[ICON]username<b class="caret"></b></span></a>
+					<?php if ($_SESSION['login_user']) { ?>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle"><?php echo $_SESSION['email'] ?><b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
-							<li class="aElement"><a href="#">My Page</a></li>
-							<li class="aElement"><a href="/SEEGO/signup.php">Registration</a></li>						
+							<li class="aElement"><a href="mypage.php">My Page</a></li>
+							<li class="aElement"><a href="parts/logout.php">Log out</a></li>						
 						</ul>
 					</li>
 
 					<?php }?>
 
-					
 				</ul>
 
 			</div>

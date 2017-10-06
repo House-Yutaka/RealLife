@@ -1,5 +1,7 @@
 <?php
   $eTabName = 'signup';
+  session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +14,7 @@
   include('parts/header.php');
   ?>
 <?php 
-session_start();
+
 // 各入力項目の設定、検証
     $username = '';
     $email = '';

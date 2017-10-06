@@ -1,5 +1,7 @@
 <?php
 	$eTabName = 'Edit';
+    session_start();
+    
 ?>
 
 <!DOCTYPE html>

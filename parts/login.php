@@ -1,11 +1,13 @@
 <?php 
-// セッションを使う場合はsession_start();を記述する
-if ($_POST) {
-  # code...
-session_start();
-include('db_connect.php');
 
-// バリデーション処理のエラーチェック
+if(empty($_SESSION['login_user'])){
+  $_SESSION['login_user'] = "";
+  $_SESSION['email'] = "";
+}
+
+if ($_POST) {
+include('db_connect.php');
+$regist_error = "";
 $errors = array();
 
 if (!empty($_POST)) {
@@ -23,7 +25,6 @@ if (!empty($_POST)) {
       }elseif (strlen($password) < 6) {
         $errors['password'] = 'length';
       }
-
     // ログイン処理を記述
     if(empty($errors)){
       // すべてのエラーがなければ実行
@@ -36,16 +37,15 @@ if (!empty($_POST)) {
       $stmt ->execute($data);
       // セレクト文を実行したかを取得する
       $record = $stmt->fetch(PDO::FETCH_ASSOC);
-      var_dump($record);
+      //var_dump($record);
 
     // ログインできれば
     if ($record != false){
     // データが一致しました。
     // 本人確認完了
       $_SESSION['login_user']=$record;
-
-      header('Location: mypage.php');
-      exit();
+      $_SESSION['email'] = $email;
+      //header('Location: mypage.php');
   } else {
     // ログインできなければ
     $errors['login'] = "NG";
