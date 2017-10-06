@@ -47,17 +47,18 @@ $dbh = null;
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
+				<div class="col-lg-offset-1"></div>
 				<div class="back-style">
-					<div class="col-offset-lg-1 col-lg-11">
+					<div class="col-lg-11">
 						<div class="row">
-							<div class="col-lg-12">
-								<form action="" method="POST">
+							<div class="col-lg-offset-1 col-lg-11">
+								<!-- <form action="" method="POST">
             						<input type="text"  name="location" id="address" placeholder="東京スカイツリー">
            							<input type="submit" value="地図検索" id="button">
                 					<br>
                 					<a href="signup.php">ユーザー登録</a>
                 					<a href="login.php">ログイン</a>
-            					 </form>
+            					 </form> -->
 								<!-- 地図を表示させる要素 -->
 								<div id="map-canvas"></div>
 							</div>
