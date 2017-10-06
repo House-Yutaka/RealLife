@@ -75,7 +75,7 @@ $dbh = null;
             var contentStr = '';
             for (var i in address) {
             contentStr = '<div style="width: 80px; height: 80px;">'
-           + '<p><a href="index.html"><img src="images/' + picture[i] + '" width="70"></a></p>';
+           + '<p><a href="detail.php"><img src="images/' + picture[i] + '" width="70"></a></p>';
                 getLatLng(address[i],contentStr);
             }
 
