@@ -54,9 +54,9 @@ if(!empty($_POST)){
 
   if (empty($errors)) {
 
-    $_SESSION['seego_info']['username'] = $username;
-    $_SESSION['seego_info']['email'] = $email;
-    $_SESSION['seego_info']['password'] = $password;
+    $_SESSION['login_user']['username'] = $username;
+    $_SESSION['login_user']['email'] = $email;
+    $_SESSION['login_user']['password'] = $password;
 
     //check.phpに飛ぶ
     header('Location: check.php');

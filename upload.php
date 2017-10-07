@@ -5,11 +5,11 @@ $eTabName = 'Upload';
 // 各入力項目の設定、検証
   session_start();
 
-   // if (!isset($_SESSION['seego_info'])) {
-   //   //一度も入力せずに飛んだ人は登録画面へ飛ばす。
-   //   header('Location: signup.php');
-   //   exit();
-   // }
+   if (empty($_SESSION['login_user'])) {
+     //一度も入力せずに飛んだ人は登録画面へ飛ばす。
+     header('Location: signup.php');
+     exit();
+   }
 
     $text = '';
     $address = '';
@@ -61,17 +61,17 @@ if(!empty($_POST)){
       //確認ページへ飛ばす。
 
       // すべてのチェックでエラーがなければ画像アップロード
-        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/ex_view_images/'.$fileName);
+        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/upload_file'.$fileName);
         
         //check.phpへリダイレクト
         // $_SESSION スーパーグローバル変数
         // データを一時的に保存する
         // 一時的なものなので長期間は保存できないので注意が必要
         // $_SESSION['user_info']['user_id'] = $user_id;
-        $_SESSION['seego_info']['address'] = $address;
-        $_SESSION['seego_info']['text'] = $text;
-        $_SESSION['seego_info']['eva'] = $_POST['eva'];
-        $_SESSION['seego_info']['profile_image_path'] = $fileName;
+        $_SESSION['login_user']['address'] = $address;
+        $_SESSION['login_user']['text'] = $text;
+        $_SESSION['login_user']['eva'] = $_POST['eva'];
+        $_SESSION['login_user']['profile_image_path'] = $fileName;
 
     //check.phpに飛ぶ
     header('location: upload_check.php');
@@ -99,9 +99,9 @@ if(!empty($_POST)){
       <div class="picup">
         <div class="row">
           <div class="col-lg-12">
-            <form method="POST" action="" enctype="multipart/form-data" accept="image/*">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div style="height: 600px;" class="imgInput">
-                  <input type="file" name="profile_image_path" class="btn btn-sm" value="<?php echo $filename; ?>">
+                  <input type="file" name="profile_image_path" class="btn btn-sm" accept="image/*" value="<?php echo $filename; ?>">
                 </div><!--/.imgInput-->
             <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
 
@@ -115,8 +115,8 @@ if(!empty($_POST)){
             <!-- コメントの入力 -->
                 <p>
                   <label>コメント</label><br>
-                  <input type="text" name="text" value="<?php echo $text; ?>">
-                    <?php if(isset($errors['text'])){ ?>
+                  <textarea cols="50" name="text" rows="5" ></textarea>
+                    <?php if(isset($errors['text']) && $errors['text'] == 'blank'){ ?>
                       <div class="alert alert-danger">
                       コメントを入力してください
                       </div>
