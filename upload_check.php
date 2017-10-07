@@ -20,7 +20,7 @@
          //  var_dump($_POST);
          // echo 'POST送信しました';
 
-      $users = $_SESSION['login_user'];
+      $user_id = $_SESSION['login_user']['id'];
       $address = $_SESSION['login_user']['address'];
       $text = $_SESSION['login_user']['text'];
       $picture_path = $_SESSION['login_user']['profile_image_path'];
@@ -30,7 +30,7 @@
       $sql = 'INSERT INTO `seego_pictures` SET `user_id`=?,`address`=?,`text`=?,`picture_path`=?,`created` =NOW()';
         // var_dump($_SESSION['login_user']);
 
-      $data = array($_SESSION['login_user'],$user_id,$address,$text,$picture_path);
+      $data = array($user_id,$address,$text,$picture_path);
       $stmt = $dbh->prepare($sql);
       $stmt->execute($data);
       header('Location: mypage.php');
@@ -59,7 +59,7 @@ $dbh = null;
           <div class="row">
             <div class="col-lg-12">
                 <div>
-                  下記の情報で登録してもよろしいでしょうか。さん<br>
+                  下記の情報で登録してもよろしいでしょうか。<?php echo $_SESSION['login_user']['username'] ?>さん<br>
                     <img src="images/ex_view_images/<?php echo $_SESSION['login_user']['profile_image_path'] ?>" width="350"><br>
                     <span style="padding-top: 15px;">
                           <label>住所</label><br>

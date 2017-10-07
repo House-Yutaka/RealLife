@@ -61,7 +61,7 @@ if(!empty($_POST)){
       //確認ページへ飛ばす。
 
       // すべてのチェックでエラーがなければ画像アップロード
-        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], '/upload_file'.$fileName);
+        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/upload_file'.$fileName);
         
         //check.phpへリダイレクト
         // $_SESSION スーパーグローバル変数
