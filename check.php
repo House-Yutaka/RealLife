@@ -4,7 +4,7 @@
   session_start();
   require('parts/db_connect.php');
 
-  // if (!isset($_SESSION['seego_info'])) {
+  // if (!isset($_SESSION['login_user'])) {
   //   header('Location: signup.php');
   //   exit();
   // }
@@ -12,9 +12,9 @@
   // 登録ボタンを押したら処理開始
   if(!empty($_POST)){
 
-    $username = $_SESSION['seego_info']['username'];
-    $email = $_SESSION['seego_info']['email'];
-    $password = $_SESSION['seego_info']['password'];
+    $username = $_SESSION['login_user']['username'];
+    $email = $_SESSION['login_user']['email'];
+    $password = $_SESSION['login_user']['password'];
   
 
   $sql = 'INSERT INTO `seego_users` SET `username`=?,`email`=?,`password`=?,`created` =NOW()';
@@ -48,10 +48,10 @@
                 <div>
                   <h1>情報入力最終確認</h1><br>
                   <h3>以下の内容でお間違い無いですか？</h3><br>
-                    ユーザー名　　:<?php echo $_SESSION['seego_info']['username']; ?><br>
-                    メールアドレス:<?php echo $_SESSION['seego_info']['email']; ?><br>
+                    ユーザー名　　:<?php echo $_SESSION['login_user']['username']; ?><br>
+                    メールアドレス:<?php echo $_SESSION['login_user']['email']; ?><br>
                     パスワード(忘れないでください)<br>
-                    <?php echo $_SESSION['seego_info']['password']; ?><br>
+                    <?php echo $_SESSION['login_user']['password']; ?><br>
                 </div>
                 <div>
                     <form method="POST" action="signup.php">
