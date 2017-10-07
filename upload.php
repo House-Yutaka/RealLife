@@ -61,7 +61,7 @@ if(!empty($_POST)){
       //確認ページへ飛ばす。
 
       // すべてのチェックでエラーがなければ画像アップロード
-        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'upload_file/'.$fileName);
+        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], '/upload_file'.$fileName);
         
         //check.phpへリダイレクト
         // $_SESSION スーパーグローバル変数
@@ -99,9 +99,9 @@ if(!empty($_POST)){
       <div class="picup">
         <div class="row">
           <div class="col-lg-12">
-            <form method="POST" action="" enctype="multipart/form-data" accept="image/*">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div style="height: 600px;" class="imgInput">
-                  <input type="file" name="profile_image_path" class="btn btn-sm" value="<?php echo $filename; ?>">
+                  <input type="file" name="profile_image_path" class="btn btn-sm" accept="image/*" value="<?php echo $filename; ?>">
                 </div><!--/.imgInput-->
             <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
 
