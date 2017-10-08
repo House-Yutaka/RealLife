@@ -1,13 +1,10 @@
 <?php
 $eTabName = 'detail';
+require('parts/db_connect.php');
+
 session_start();
-// require('db_connect.php');
 
-// if(!isset($_SESSION['login_user']['id'])){
 
-//     header('Location: login.php');
-//     exit();
-// }
 
 
 
