@@ -8,13 +8,8 @@
 	// タブの名前
 		$tabNames = array("Home","Mypage","Upload","About","Edit","Contact","Timeline");
 
-	}else{
-		$tabNames = array("Home","Contact","Timeline");
-	}
-
-	
-	// それぞれのタブのリンク
-	$links = array(
+		// それぞれのタブのリンク
+		$links = array(
 		"index.php",
 		"mypage.php",
 		"upload.php",
@@ -24,8 +19,8 @@
 		"timeline.php"
 		);
 
-	// それぞれのタブの横に出るアイコンのタグ (awesome font)
-	$iconTexts = array(
+		// それぞれのタブの横に出るアイコンのタグ (awesome font)
+		$iconTexts = array(
 		"<i class=\"fa fa-home fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-meh-o fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-camera-retro fa-fw faa-ring\" aria-hidden=\"true\"></i>",
@@ -35,6 +30,34 @@
 		"<i class=\"fa fa-question fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-clock-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
 		);
+
+
+	}else{
+		$tabNames = array("Home","About","Contact","Timeline");
+
+		// それぞれのタブのリンク
+		$links = array(
+		"index.php",
+		"about.php",
+		"contact.php",
+		"timeline.php"
+		);
+
+		// それぞれのタブの横に出るアイコンのタグ (awesome font)
+		$iconTexts = array(
+		"<i class=\"fa fa-home fa-fw faa-ring\" aria-hidden=\"true\"></i>",
+		"<i class=\"fa fa-info fa-fw faa-ring\" aria-hidden=\"true\"></i>",
+		"<i class=\"fa fa-question fa-fw faa-ring\" aria-hidden=\"true\"></i>",
+		"<i class=\"fa fa-clock-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
+		);
+
+
+	}
+
+	
+	
+
+	
 
 
 
