@@ -8,27 +8,40 @@
 	session_start();
 	require('parts/db_connect.php');
 
-	// 投稿一覧を表示する
-	$sql = "SELECT `p`.*
-	        FROM `seego_pictures` AS `p` 
-	        LEFT JOIN `seego_users` AS `u`
-	        ON `p`.`user_id`=`u`.`id` 
-	        WHERE 1 ORDER BY `p`.`id` DESC";
-	$data = array(); // ?が無い場合は空のままでOK
-	$stmt = $dbh->prepare($sql);
-	$stmt->execute($data); // object思考でexecuteを実行している
+	$sql='SELECT `user_id`,`text` FROM `seego_pictures` WHERE `id`=?';
+	$data=array($_GET['id']);
+	$stmt=$dbh->prepare($sql);
+	$stmt->execute($data);
 
-	// 表示用の配列を用意
-	$contributions = array();
-	while(true){
-		$record = $stmt->fetch(PDO::FETCH_ASSOC);
-		// $recordはデータベースのカラム値をkeyとする。
-		// 連想配列で構成されます。（データベースから１件取ってきます。）
-		if(!$record){
-			break;
-		}
-		$contributions[]=$record;
-	}
+	$record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	// var_dump($record);
+
+
+// 	// 投稿一覧を表示する
+// 	$sql = "SELECT seego_pictures.id, picture_path, address, text, created FROM friends,areas WHERE friends.area_id=areas.id
+// "
+
+// 	$sql = "SELECT `p`.*
+// 	        FROM `seego_pictures` AS `p` 
+// 	        LEFT JOIN `seego_users` AS `u`
+// 	        ON `p`.`user_id`=`u`.`id` 
+// 	        WHERE 1 ORDER BY `p`.`id` DESC";
+// 	$data = array(); // ?が無い場合は空のままでOK
+// 	$stmt = $dbh->prepare($sql);
+// 	$stmt->execute($data); // object思考でexecuteを実行している
+
+// 	// 表示用の配列を用意
+// 	$contributions = array();
+// 	while(true){
+// 		$record = $stmt->fetch(PDO::FETCH_ASSOC);
+// 		// $recordはデータベースのカラム値をkeyとする。
+// 		// 連想配列で構成されます。（データベースから１件取ってきます。）
+// 		if(!$record){
+// 			break;
+// 		}
+// 		$contributions[]=$record;
+// 	}
 
 ?>
 
@@ -70,14 +83,21 @@
 				<div class="col-md-9 col-xs-12">
 						 <!-- 縦に記述 -->
 						<h3>投稿一覧</h3><br>
-						<!-- 投稿した写真＆コメントが表示される -->
+							<!-- 人見コード↓ -->
+							<h3><?php echo $record['user_id']; ?></h3>
+							<h2><?php echo $record['text']; ?></h2>
+							<!-- 人見コードここまで -->
+
+
+							<!-- 投稿した写真＆コメントが表示される -->
 							<?php foreach($contributions as $contribution){ ?>
 								<div style="margin-bottom: 15px;">
 									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
 									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
+								</div>
 						    <?php } ?>
-						    </div>
+						    
 						
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
@@ -86,11 +106,8 @@
 									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
 									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
-						    <?php } ?>
-						    </div>
-
-
-						
+								</div>
+						    <?php } ?>						
 				</div>		
 			</div>									
 		</div>

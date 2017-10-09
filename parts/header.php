@@ -55,7 +55,7 @@
 					<?php if ($_SESSION['login_user']) { ?>
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: #000000;"><span class="loginstyle"><?php echo $_SESSION['email'] ?><b class="caret"></b></span></a>
 						<ul class="dropdown-menu dropdownStyle">
-							<li class="aElement"><a href="mypage.php">My Page</a></li>
+							<li class="aElement"><a href="mypage.php?id=<?php echo $_SESSION['login_user']['id']; ?>">My Page</a></li>
 							<li class="aElement"><a href="parts/logout.php">Log out</a></li>						
 						</ul>
 					</li>
