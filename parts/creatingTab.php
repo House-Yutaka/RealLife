@@ -3,9 +3,15 @@
 
 	// style用のclassの名前
 	$selectedClass = "selectedTab";
-	
+
+	if(!empty($_SESSION['login_user']['id'])){
 	// タブの名前
-	$tabNames = array("Home","Mypage","Upload","About","Edit","Contact","Timeline");
+		$tabNames = array("Home","Mypage","Upload","About","Edit","Contact","Timeline");
+
+	}else{
+		$tabNames = array("Home","Contact","Timeline");
+	}
+
 	
 	// それぞれのタブのリンク
 	$links = array(
