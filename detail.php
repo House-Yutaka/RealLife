@@ -15,8 +15,13 @@ if(!isset($_GET['id'])){
   header('Location: timeline.php');
   exit();
 }
+  $sql = 'SELECT friends.id, name, area_id, gender, created, modified, area FROM friends,areas WHERE friends.area_id=areas.id';
+  $data = array($_GET['id']);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
 
-
+  // 1件のみなので、Whileでループさせず、一件目のみFetchする
+  $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
