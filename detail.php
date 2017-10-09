@@ -4,8 +4,17 @@ require('parts/db_connect.php');
 
 session_start();
 
+if(!isset($_SESSION['login_user']['id'])){
+    header('Location: login.php');
+    exit();
+}
 
-
+// ここはログインしたユーザーが通る
+// パラメータチェック
+if(!isset($_GET['id'])){
+  header('Location: timeline.php');
+  exit();
+}
 
 
 
@@ -31,7 +40,7 @@ session_start();
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="back-style">
-						<h1 style="text-align: center;">Hello.World</h1>
+						
 					</div>
 				</div>
 			</div>
