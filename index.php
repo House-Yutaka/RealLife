@@ -16,13 +16,18 @@ require('parts/db_connect.php');
          break;
     }
         // echo $rec['place'];
-        $add[]=$rec['address'];
+        $add[]=$rec;
         $pic[]=$rec['picture_path'];
 
-        // var_dump($rec);
+        
     }
+
+
+
 // ３．データベースを切断する
 $dbh = null;
+
+
 
 
 
@@ -78,8 +83,8 @@ $dbh = null;
             var contentStr = '';
             for (var i in address) {
             contentStr = '<div style="width: 80px; height: 80px;">'
-           + '<p><a href="detail.php"><img src="images/' + picture[i] + '" width="70"></a></p>';
-                getLatLng(address[i],contentStr);
+           + '<p><a href="detail.php?id='　+ address[i]['id'] +'"><img src="images/ex_view_images/' + picture[i] + '" width="70"></a></p>';
+                getLatLng(address[i]['address'],contentStr);
             }
 
         </script>
