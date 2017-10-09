@@ -9,7 +9,7 @@
 	require('parts/db_connect.php');
 
 	// 投稿一覧を表示する
-	$sql = "SELECT `p`.* 
+	$sql = "SELECT `p`.*
 	        FROM `seego_pictures` AS `p` 
 	        LEFT JOIN `seego_users` AS `u`
 	        ON `p`.`user_id`=`u`.`id` 
@@ -48,13 +48,13 @@
 			<!-- このdivたぐの中に書く -->
 		<div class="container">
 			<div class="row">					
-				<div class="col-xs-3">
+				<div class="col-md-3 col-xs-12">
 		  			<div class="prof-img">	  
 						<!-- アイコン写真が飛んでくる -->
 						<?php if($_SESSION['login_user']['user_icon']==null){ ?>
 							<img src="images/images.png">
 						<?php }else{ ?>
-							<img src="<?php echo 'images/'.$image['user_icon'];?>">
+							<img src="images/<?php $image['login_user']['user_icon'];?>">
 						<?php } ?>
 	  					 <div>
 	  					 	<!-- usernameが飛んでくる -->
@@ -67,7 +67,7 @@
 					</div>
 				</div>
 					
-				<div class="col-xs-9">
+				<div class="col-md-9 col-xs-12">
 						 <!-- 縦に記述 -->
 						<h3>投稿一覧</h3><br>
 						<!-- 投稿した写真＆コメントが表示される -->
