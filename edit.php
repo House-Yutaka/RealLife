@@ -17,23 +17,23 @@
 	<div class="wrapper">
     
     <?php
-    $image = 'images/tomtom.jpg';
-    $nickname = '';
+    $user_icon = 'images/images.png';
+    $username = '';
     $email = '';
     $password = '';
     $content = '';
 
     if(!empty($_POST)){
 
-        $nickname = $_POST['nickname'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $content = $_POST['content'];
+        
         
         $errors=array();
         
-        if($nickname == ''){
-            $errors['nickname'] = 'blank';
+        if($username == ''){
+            $errors['username'] = 'blank';
         }
 
         if($email == ''){
@@ -46,11 +46,8 @@
             $errors['password'] = 'length';
         }
 
-        if($content == ''){
-            $errors['content'] = 'blank';
-        }
 
-    $fileName = $_FILES['profile_image_path']['name'];
+        $fileName = $_FILES['profile_image_path']['name'];
         
         if(!empty($fileName)){
             $ext = substr($fileName, -3);
@@ -63,7 +60,17 @@
             if(empty($errors)){
             move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/'.$_FILES['profile_image_path']['name']);
             }
-        }
+            }
+        
+
+        $sql = 'UPDATE `seego_users` SET `username`=?,`email`=?,`password`=?,`user_icon`=? WHERE `id`=?';
+        $data = array($username,$email,$password,$user_icon);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+
+        header('Location: mypage.php');
+        exit();
     }
     ?>
 
@@ -74,7 +81,7 @@
             <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-12">
                 	<div>
-                		<img alt="userpic" src="<?php echo $image; ?>"><br><br>
+                		<img alt="userpic" src="<?php echo $_SESSION['login_user']['user_icon']; ?>"><br><br>
                         <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
                         <br><br>
                         <?php if(isset($errors['profile_image_path'])){ ?>
@@ -89,8 +96,8 @@
                 	<div class="form">
                     
                         <label>Name</label><br>                        
-                            <input class="form-control" type="text" name="nickname" required style="width: 300px; border: solid 2px #001a42 ">
-                            <?php if(isset($errors['nickname'])){ ?>
+                            <input class="form-control" type="text" name="username" required style="width: 300px; border: solid 2px #001a42 ">
+                            <?php if(isset($errors['username'])){ ?>
                                 <div class="alert alert-danger" required style="width: 300px;">
                                 ニックネームを入力してください。
                                 </div>
@@ -116,13 +123,6 @@
                                 </div>
                             <?php } ?> 
 
-                        <label>一言</label><br>                       
-                            <textarea class="form-control" name="content" rows="10" required style="width: 300px; border: solid 2px #001a42 "></textarea>
-                            <?php if(isset($errors['content'])){ ?>
-                                 <div class="alert alert-danger">
-                                    コメントを入力してください。
-                                </div>
-                            <?php } ?>
                         
                         <input type="submit" class="btn btn-lg" value="プロフィール変更">
                     
