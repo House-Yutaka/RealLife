@@ -2,29 +2,32 @@
 	$eTabName = 'Mypage';
 ?>
 
-<!-- ログイン状態のチェック不可 -->
-
 
 
 <?php
 	session_start();
 	require('parts/db_connect.php');
 
-	// ログイン状態かチェック
-	// if(!isset($_SESSION['seego_info']['id'])){
-	// 	header('Location: index.php');
-	// 	exit();
-	// }
+	// 投稿一覧を表示する
+	$sql = "SELECT `p`.* 
+	        FROM `seego_pictures` AS `p` 
+	        LEFT JOIN `seego_users` AS `u`
+	        ON `p`.`user_id`=`u`.`id` 
+	        WHERE 1 ORDER BY `p`.`id` DESC";
+	$data = array(); // ?が無い場合は空のままでOK
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute($data); // object思考でexecuteを実行している
 
-	if(isset($_SESSION['seego_info']['id'])){
-
-		$sql = 'SELECT * FROM `seego_users` WHERE `id`=?';
-		$data = array($_SESSION['seego_info']['id']);
-		$stmt = $dbh->prepare($sql);
-		$stmt->execute($data);
+	// 表示用の配列を用意
+	$contributions = array();
+	while(true){
 		$record = $stmt->fetch(PDO::FETCH_ASSOC);
-      	header('Location: mypage.php');
-      	exit();
+		// $recordはデータベースのカラム値をkeyとする。
+		// 連想配列で構成されます。（データベースから１件取ってきます。）
+		if(!$record){
+			break;
+		}
+		$contributions[]=$record;
 	}
 
 ?>
@@ -39,23 +42,23 @@
 	<?php
 		include('parts/header.php');
 	?>
-	<form method="POST" action="" enctype="multipart/form-data">
 	<div class="wrapper">
+		<form method="POST" action="" enctype="multipart/form-data">
+
 			<!-- このdivたぐの中に書く -->
 		<div class="container">
 			<div class="row">					
 				<div class="col-xs-3">
 		  			<div class="prof-img">	  
-						ここ編集中！！
 						<!-- アイコン写真が飛んでくる -->
-						<?php if($_SESSION['seego_info']['user_icon']==null){ ?>
+						<?php if($_SESSION['login_user']['user_icon']==null){ ?>
 							<img src="images/images.png">
 						<?php }else{ ?>
-							<img src="images/<?php echo $_SESSION['seego_info']['user_icon'];?>">
+							<img src="<?php echo 'images/'.$image['user_icon'];?>">
 						<?php } ?>
 	  					 <div>
 	  					 	<!-- usernameが飛んでくる -->
-	     					<h2><?php echo $_SESSION['seego_info']['username']; ?></h2>
+	     					<h2><?php echo $_SESSION['login_user']['username']; ?></h2>
 	  					 </div>
 						 <div>
 	 					  <a href="edit.php" type="button"><i class="fa fa-edit"></i>Edit</a><br>
@@ -65,38 +68,30 @@
 				</div>
 					
 				<div class="col-xs-9">
-					<div class="row">
 						 <!-- 縦に記述 -->
 						<h3>投稿一覧</h3><br>
 						<!-- 投稿した写真＆コメントが表示される -->
-						<div class="col-xs-3">
-						<div>
-							<img width="180px" height="180px" src="images/IMG_1592.JPG" alt="">
-						</div><br>
-						
-						<div>
-							<img width="180px" height="180px" src="images/city.jpg" alt="">
-						</div><br>
+							<?php foreach($contributions as $contribution){ ?>
+								<div style="margin-bottom: 15px;">
+									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
+									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
+						    <?php } ?>
+						    </div>
 						
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
-						<div>
-							<img width="180px" height="180px" src="images/IMG_0427.JPG" alt="">
-						</div><br>
-						
-						<div>
-							<img width="180px" height="180px" src="images/CIMG0388.JPG" alt="">
-						</div><br>
-						</div>
+							<?php foreach($contributions as $contribution){ ?>
+								<div style="margin-bottom: 15px;">
+									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
+									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
+						    <?php } ?>
+						    </div>
 
-						<div class="col-xs-9">
-							<textarea class="contribution" style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea><br>
-							<textarea class="contribution" style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea><br><br><br>
-							<textarea class="contribution" style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea><br>
-							<textarea class="contribution" style="width: 85%; height: 180px; border: solid 2px #001a42 " rows="5"></textarea>
-						</div>
-				</div>	
-				</div>	
+
+						
+				</div>		
 			</div>									
 		</div>
 
