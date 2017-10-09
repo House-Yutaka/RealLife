@@ -1,19 +1,25 @@
 <?php
-    $eTabName = 'Contact';
-    session_start();
-    
+    $eTabName = 'Contact';      
 ?>
 
 <?php
+
+    session_start();
+
+    
+
+
+
+
     $nickname = '';
     $email = '';
     $content = '';
 
         if(!empty($_POST)){
 
-            $nickname = htmlspecialchars($_POST['nickname']);
-            $email = htmlspecialchars($_POST['email']);
-            $content = htmlspecialchars($_POST['content']);
+            // $nickname = htmlspecialchars($_POST['nickname']);
+            // $email = htmlspecialchars($_POST['email']);
+            // $content = htmlspecialchars($_POST['content']);
         
             $errors=array();
         
