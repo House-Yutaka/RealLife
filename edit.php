@@ -51,6 +51,7 @@
         if(!empty($fileName)){
             $ext = substr($fileName, -3);
 
+            var_dump($fileName);
             $ext = strtolower($ext);
             if($ext != 'jpg' && $ext !='png' && $ext != 'gif'){
                 $errors['profile_image_path'] = 'extension';
@@ -79,9 +80,9 @@
             <div class="row">
             <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-12">
-                	<div>
-                		<img alt="userpic" src="<?php echo $user_icon; ?>"><br><br>
-                        <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
+                	<div class="imgInput">
+                    <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
+                    <img src="images/images.png" alt="" class="imgView">
                         <br><br>
                         <?php if(isset($errors['profile_image_path'])){ ?>
                             <div class="alert alert-danger">
@@ -132,6 +133,41 @@
             </div>
         </div>
         </div>
+<!-- ◆SCRIPT -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(function(){
+    var setFileInput = $('.imgInput'),
+    setFileImg = $('.imgView');
+ 
+    setFileInput.each(function(){
+        var selfFile = $(this),
+        selfInput = $(this).find('input[type=file]'),
+        prevElm = selfFile.find(setFileImg),
+        orgPass = prevElm.attr('src');
+ 
+        selfInput.change(function(){
+            var file = $(this).prop('files')[0],
+            fileRdr = new FileReader();
+ 
+            if (!this.files.length){
+                prevElm.attr('src', orgPass);
+                return;
+            } else {
+                if (!file.type.match('image.*')){
+                    prevElm.attr('src', orgPass);
+                    return;
+                } else {
+                    fileRdr.onload = function() {
+                        prevElm.attr('src', fileRdr.result);
+                    }
+                    fileRdr.readAsDataURL(file);
+                }
+            }
+        });
+    });
+});
+</script>
 		<div class="push"></div>
 	</div>
 
@@ -140,3 +176,6 @@
 	?>
 </body>
 </html>
+
+                        <img alt="userpic" src="<?php echo $user_icon; ?>"><br><br>
+                        <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
