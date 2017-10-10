@@ -11,7 +11,7 @@
 		// それぞれのタブのリンク
 		$links = array(
 		"index.php",
-		"mypage.php",
+		"mypage.php?id=".$_SESSION['login_user']['id'],
 		"upload.php",
 		"about.php",
 		"edit.php",
