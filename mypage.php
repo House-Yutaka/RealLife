@@ -8,19 +8,17 @@
 	session_start();
 	require('parts/db_connect.php');
 
-	$sql='SELECT `user_id`,`text` FROM `seego_pictures` WHERE `id`=?';
+	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `id`=?';
 	$data=array($_GET['id']);
 	$stmt=$dbh->prepare($sql);
 	$stmt->execute($data);
 
-	$record = $stmt->fetch(PDO::FETCH_ASSOC);
+	// $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	// var_dump($record);
 
 
 // 	// 投稿一覧を表示する
-// 	$sql = "SELECT seego_pictures.id, picture_path, address, text, created FROM friends,areas WHERE friends.area_id=areas.id
-// "
 
 // 	$sql = "SELECT `p`.*
 // 	        FROM `seego_pictures` AS `p` 
@@ -31,17 +29,17 @@
 // 	$stmt = $dbh->prepare($sql);
 // 	$stmt->execute($data); // object思考でexecuteを実行している
 
-// 	// 表示用の配列を用意
-// 	$contributions = array();
-// 	while(true){
-// 		$record = $stmt->fetch(PDO::FETCH_ASSOC);
-// 		// $recordはデータベースのカラム値をkeyとする。
-// 		// 連想配列で構成されます。（データベースから１件取ってきます。）
-// 		if(!$record){
-// 			break;
-// 		}
-// 		$contributions[]=$record;
-// 	}
+	// 表示用の配列を用意
+	$contributions = array();
+	while(true){
+		$record = $stmt->fetch(PDO::FETCH_ASSOC);
+		// $recordはデータベースのカラム値をkeyとする。
+		// 連想配列で構成されます。（データベースから１件取ってきます。）
+		if(!$record){
+			break;
+		}
+		$contributions[]=$record;
+	}
 
 ?>
 
@@ -92,7 +90,7 @@
 							<!-- 投稿した写真＆コメントが表示される -->
 							<?php foreach($contributions as $contribution){ ?>
 								<div style="margin-bottom: 15px;">
-									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
+									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
 									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
 								</div>
@@ -103,7 +101,7 @@
 						<!-- いいね！押した記事が表示される -->
 							<?php foreach($contributions as $contribution){ ?>
 								<div style="margin-bottom: 15px;">
-									<img src="images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
+									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
 									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
 								</div>
