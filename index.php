@@ -59,13 +59,11 @@ $dbh = null;
 					<div class="col-lg-11">
 						<div class="row">
 							<div class="col-lg-offset-1 col-lg-11">
-								<!-- <form action="" method="POST">
-            						<input type="text"  name="location" id="address" placeholder="東京スカイツリー">
-           							<input type="submit" value="地図検索" id="button">
-                					<br>
-                					<a href="signup.php">ユーザー登録</a>
-                					<a href="login.php">ログイン</a>
-            					 </form> -->
+								 <form action="">
+            						<input type="text" id="address" placeholder="例 :東京スカイツリー">
+            						<input type="button" value="地図検索" id="button" onclick="getLatLng(document.getElementById('address').value); return(false);">
+        						</form>
+        						<br>
 								<!-- 地図を表示させる要素 -->
 								<div id="map-canvas"></div>
 							</div>

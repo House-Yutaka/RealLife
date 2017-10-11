@@ -6,18 +6,6 @@
               zoom: 5 ,
           });
 
-          // function getLatLng2(){
-            // var address = database
-            // for(){
-            //   getLatLng(address);
-            // }
-          //   getLatLng('大阪府');
-          //   getLatLng('埼玉県')
-          // }
-
-          // var contentStr = '<div style="width: 80px; height: 80px;">'
-          //  + '<p><a href="index.html"><img src="images/<?php echo json_encode getContent(picture[i]); ?>"/ width="70"></a></p>';
-
 
           function getLatLng(place,pic) {
            //  contentStr = '<div style="width: 80px; height: 80px;">'
@@ -48,20 +36,11 @@
                         content: pic
                       });
 
-
-
-
-
-
                       var positionMaker = new google.maps.Marker({
                         position: latlng,
                         map: map
                       });
                       
-                      // infowindow.open(map, new google.maps.Marker({
-                      //   position: latlng,
-                      //   map: map
-                      // }));
                       google.maps.event.addDomListener(positionMaker,"click", function(){
                       infowindow.open(map,positionMaker);
                       });
