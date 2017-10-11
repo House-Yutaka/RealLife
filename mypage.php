@@ -2,13 +2,11 @@
 	$eTabName = 'Mypage';
 ?>
 
-
-
 <?php
 	session_start();
 	require('parts/db_connect.php');
 
-	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `id`=?';
+	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
 	$data=array($_GET['id']);
 	$stmt=$dbh->prepare($sql);
 	$stmt->execute($data);
@@ -18,16 +16,7 @@
 	// var_dump($record);
 
 
-// 	// 投稿一覧を表示する
-
-// 	$sql = "SELECT `p`.*
-// 	        FROM `seego_pictures` AS `p` 
-// 	        LEFT JOIN `seego_users` AS `u`
-// 	        ON `p`.`user_id`=`u`.`id` 
-// 	        WHERE 1 ORDER BY `p`.`id` DESC";
-// 	$data = array(); // ?が無い場合は空のままでOK
-// 	$stmt = $dbh->prepare($sql);
-// 	$stmt->execute($data); // object思考でexecuteを実行している
+ 	// 投稿一覧を表示する
 
 	// 表示用の配列を用意
 	$contributions = array();
@@ -79,33 +68,47 @@
 				</div>
 					
 				<div class="col-md-9 col-xs-12">
+					<div class="contribution">
 						 <!-- 縦に記述 -->
 						<h3>投稿一覧</h3><br>
 							<!-- 人見コード↓ -->
-							<h3><?php echo $record['user_id']; ?></h3>
-							<h2><?php echo $record['text']; ?></h2>
+							<!-- <h3><?php echo $record['user_id']; ?></h3>
+							<h2><?php echo $record['text']; ?></h2> -->
 							<!-- 人見コードここまで -->
 
 
 							<!-- 投稿した写真＆コメントが表示される -->
 							<?php foreach($contributions as $contribution){ ?>
-								<div style="margin-bottom: 15px;">
+								<div class="row" style="margin-bottom: 15px;">
+								<div class="col-md-3">
 									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
-									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
-									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
 								</div>
+								<div class="col-md-9">								
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
+									<span><?php echo $contribution['address']; ?></span><br>		
+									<?php echo "投稿日時:" . $contribution['created']; ?><br>
+								</div>
+								</div>
+								
 						    <?php } ?>
 						    
 						
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
 							<?php foreach($contributions as $contribution){ ?>
-								<div style="margin-bottom: 15px;">
+								<div class="row" style="margin-bottom: 15px;">
+								<div class="col-md-3">
 									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
-									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
-									<span><?php echo $contribution['address']; ?></span><br>			<?php echo "投稿日時:" . $contribution['created']; ?><br>
 								</div>
-						    <?php } ?>						
+								<div class="col-md-9">								
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
+									<span><?php echo $contribution['address']; ?></span><br>		
+									<?php echo "投稿日時:" . $contribution['created']; ?><br>
+								</div>
+								</div>
+								
+						    <?php } ?>
+					</div>	    						
 				</div>		
 			</div>									
 		</div>
