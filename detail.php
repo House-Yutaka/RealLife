@@ -15,6 +15,10 @@ $stmt = $dbh->prepare($sql);
 $stmt->execute($data);
 
   $contribution = $stmt->fetch(PDO::FETCH_ASSOC);
+  if (!$contribution) {
+  	 header('Location: index.php');
+ 	 exit();
+  }
 
 // echo '<pre>';
 // var_dump($contribution);
@@ -40,7 +44,7 @@ while (1) {
 
 if (!empty($_POST)) {
 	if(!isset($_SESSION['login_user']['id'])){
-    header('Location: login.php');
+    header('Location: detail.php?id='.$_POST['seego_pictures_id']);
     exit();
 	}
 
@@ -123,13 +127,16 @@ if (!empty($_POST)) {
 
 						                  // 自分がいいね！を一回以上しているかどうかをチェック
 						                  $sql = 'SELECT COUNT(*) AS `count` FROM `seego_likes` WHERE `seego_pictures_id` = ? AND `user_id` = ?';
+						                  if(isset($_SESSION['login_user']['id'])){
 						                  $data = array($contribution['id'],$_SESSION['login_user']['id']);
 						                  $stmt = $dbh->prepare($sql);
 						                  $stmt->execute($data);
 						                  // 1件文のデータを取得
 						                  $likes_chk = $stmt->fetch(PDO::FETCH_ASSOC);
-
+						              	}else{
+						              		$likes_chk['count']=0;
 						                  // var_dump($likes_chk['count']);
+						              	}
 						              	?>
 						              	<!-- いいね！ボタン設置 -->
 						              	<form method="POST" action="">
