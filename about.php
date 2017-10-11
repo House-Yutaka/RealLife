@@ -86,7 +86,7 @@ session_start();
                         <!-- <small> Web Designer</small></h3> -->
                     </div>
                     <div class="col-md-4">
-                        <img src="images/IMG_0642.JPG"
+                        <img src="images/IMG_0724.JPG"
                         class="center-block img-quadrata">
                         <h3 class="text-center">Saki
                         <br/>

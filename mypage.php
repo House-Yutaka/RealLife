@@ -54,7 +54,7 @@
 						<?php if($_SESSION['login_user']['user_icon']==null){ ?>
 							<img src="images/images.png">
 						<?php }else{ ?>
-							<img src="images/<?php $image['login_user']['user_icon'];?>">
+							<img src="images/<?php $_POST['login_user']['user_icon'];?>">
 						<?php } ?>
 	  					 <div>
 	  					 	<!-- usernameが飛んでくる -->
@@ -62,13 +62,12 @@
 	  					 </div>
 						 <div>
 	 					  <a href="edit.php" type="button"><i class="fa fa-edit"></i>Edit</a><br>
-	 					  <a href="signup.php" type="button"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a>
+	 					  <a href="parts/logout.php" type="button"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a>
 						 </div>
 					</div>
 				</div>
 					
 				<div class="col-md-9 col-xs-12">
-					<div class="contribution">
 						 <!-- 縦に記述 -->
 						<h3>投稿一覧</h3><br>
 							<!-- 人見コード↓ -->
@@ -77,38 +76,40 @@
 							<!-- 人見コードここまで -->
 
 
-							<!-- 投稿した写真＆コメントが表示される -->
+							<!-- 投稿した写真＆コメントが表示される -->							
 							<?php foreach($contributions as $contribution){ ?>
+							<div class="contribution">
 								<div class="row" style="margin-bottom: 15px;">
 								<div class="col-md-3">
 									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 								</div>
 								<div class="col-md-9">								
-									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
-									<span><?php echo $contribution['address']; ?></span><br>		
-									<?php echo "投稿日時:" . $contribution['created']; ?><br>
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br><br>
+									<span><?php echo $contribution['address']; ?></span><br><br>		
+									<?php echo "投稿日時:" . $contribution['created']; ?>
 								</div>
 								</div>
-								
+							</div>
 						    <?php } ?>
 						    
 						
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
 							<?php foreach($contributions as $contribution){ ?>
+							<div class="contribution">
 								<div class="row" style="margin-bottom: 15px;">
 								<div class="col-md-3">
 									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
 								</div>
 								<div class="col-md-9">								
-									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br>
-									<span><?php echo $contribution['address']; ?></span><br>		
-									<?php echo "投稿日時:" . $contribution['created']; ?><br>
+									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br><br>
+									<span><?php echo $contribution['address']; ?></span><br><br>		
+									<?php echo "投稿日時:" . $contribution['created']; ?>
 								</div>
 								</div>
-								
+							</div>
 						    <?php } ?>
-					</div>	    						
+					    						
 				</div>		
 			</div>									
 		</div>
