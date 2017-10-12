@@ -41,7 +41,7 @@ while (1) {
 	$userdatas[] = $rec;
 }
 
-
+// いいね
 if (!empty($_POST)) {
 	if(!isset($_SESSION['login_user']['id'])){
     header('Location: detail.php?id='.$_POST['seego_pictures_id']);
@@ -69,6 +69,41 @@ if (!empty($_POST)) {
     }
     
     if (isset($_POST['likes'])) {
+
+      header('Location: detail.php?id='.$_POST['seego_pictures_id']);
+      exit();
+    }
+
+}
+
+// お気に入り
+if (!empty($_POST)) {
+	if(!isset($_SESSION['login_user']['id'])){
+    header('Location: detail.php?id='.$_POST['seego_pictures_id']);
+    exit();
+	}
+
+	if(isset($_POST['favos']) && $_POST['favos'] == 'favo'){
+        
+        $sql = 'INSERT INTO `seego_favos` SET `seego_pictures_id`=? ,
+                                        	  `user_id`=?
+        ';
+        $data = array($_POST['seego_pictures_id'],$_SESSION['login_user']['id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+    }elseif(isset($_POST['favos']) && $_POST['favos'] == 'unfavo'){
+        //お気に入り取り消しを押した場合、ここの処理が走る
+        $sql = 'DELETE FROM `seego_favos` WHERE `seego_pictures_id`=?
+                                    		AND `user_id`=?
+        ';
+        $data = array($_POST['seego_pictures_id'],$_SESSION['login_user']['id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+    }
+    
+    if (isset($_POST['favos'])) {
 
       header('Location: detail.php?id='.$_POST['seego_pictures_id']);
       exit();
@@ -114,7 +149,8 @@ if (!empty($_POST)) {
 										<?php if($userdata['id'] == $_GET['id']){  ?>
 											<div class="detail_name"><span style="color: orange;">@</span><?php echo $userdata['username']; ?></div>
 										<?php } ?>
-									<?php } ?>	
+									<?php } ?>
+									<!-- いいね機能 -->
 									<?php 
 										  if($contribution != false) {
 						                  // いいねのカウントを表示
@@ -140,7 +176,7 @@ if (!empty($_POST)) {
 						              	?>
 						              	<!-- いいね！ボタン設置 -->
 						              	<form method="POST" action="">
-						                	いいね！数:<?php echo $likes['count'];?>
+						                	<?php echo $likes['count'];?>
 						                	<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
 						                	<?php if($likes_chk['count'] < 1){ ?>
 						                    <input type="hidden" name="likes" value="like">
@@ -148,6 +184,43 @@ if (!empty($_POST)) {
 						                	<?php }else{ ?>
 						                    <input type="hidden" name="likes" value="unlike">
 						                    <input type="submit" value="いいね！取り消し" class="btn btn-danger btn-xs">
+						                <?php } ?>
+						              </form>
+									<?php } ?>
+									<!-- お気に入り機能 -->
+									<?php 
+										  if($contribution != false) {
+						                  // お気に入りのカウントを表示
+						                  $sql = 'SELECT COUNT(*) AS `count` FROM `seego_favos` WHERE `seego_pictures_id` = ?';
+						                  $data = array($contribution['id']);
+						                  $stmt = $dbh->prepare($sql);
+						                  $stmt->execute($data);
+						                  // 1件文のデータを取得
+						                  $favos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+						                  // 自分がお気に入り！を一回以上しているかどうかをチェック
+						                  $sql = 'SELECT COUNT(*) AS `count` FROM `seego_favos` WHERE `seego_pictures_id` = ? AND `user_id` = ?';
+						                  if(isset($_SESSION['login_user']['id'])){
+						                  $data = array($contribution['id'],$_SESSION['login_user']['id']);
+						                  $stmt = $dbh->prepare($sql);
+						                  $stmt->execute($data);
+						                  // 1件文のデータを取得
+						                  $favos_chk = $stmt->fetch(PDO::FETCH_ASSOC);
+						              	}else{
+						              		$favos_chk['count']=0;
+						                  // var_dump($favos_chk['count']);
+						              	}
+						              	?>
+						              	<!-- ★　ボタン設置 -->
+						              	<form method="POST" action="">
+						                	<?php echo $favos['count'];?>
+						                	<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
+						                	<?php if($favos_chk['count'] < 1){ ?>
+						                    <input type="hidden" name="favos" value="favo">
+						                    <input type="submit" value="★" class="btn btn-primary btn-xs">
+						                	<?php }else{ ?>
+						                    <input type="hidden" name="favos" value="unfavo">
+						                    <input type="submit" value="★" class="btn btn-danger btn-xs">
 						                <?php } ?>
 						              </form>
 									<?php } ?>
