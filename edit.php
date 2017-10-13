@@ -45,32 +45,59 @@
             $errors['password'] = 'length';
         }
 
-
+        if(isset($_POST['profile_image_change'])){
         $fileName = $_FILES['profile_image_path']['name'];
         
         if(!empty($fileName)){
+            var_dump($fileName);
             $ext = substr($fileName, -3);
 
-            var_dump($fileName);
             $ext = strtolower($ext);
             if($ext != 'jpg' && $ext !='png' && $ext != 'gif'){
                 $errors['profile_image_path'] = 'extension';
             }
-            
-            if(empty($errors)){
-            move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/'.$_FILES['profile_image_path']['name']);
-            }
+            }else{
+                $errors['profile_image_path'] = 'blank';
             }
         
+    if (empty($errors)){
+        //確認ページへ飛ばす。
+        
+          //ユニークなidを生成してあげる
+        $fileName=$_SESSION['login_user']['id']."__".$fileName;
+        // 前回の画像を削除する
+        unlink('profile_image/'.$_SESSION['login_user']['picture_path']);
+  
+        // すべてのチェックでエラーがなければ画像アップロード　　　一瞬画像データを保持する
+        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'profile_image/'.$fileName);
+        
 
-        $sql = 'UPDATE `seego_users` SET `username`=?,`email`=?,`password`=?,`user_icon`=? WHERE `id`=?';
-        $data = array($username,$email,$password,$user_icon);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
+        //check.phpへリダイレクト
+        // $_SESSION スーパーグローバル変数
+        // データを一時的に保存する
+        // 一時的なものなので長期間は保存できないので注意が必要
+        $_SESSION['login_user']['picture_path'] = $fileName;
+
+        // データベースを更新する
+              $sql = 'UPDATE `users` SET `picture_path`=? WHERE `id`=?';
+              $data= array($_SESSION['login_user']['picture_path'],$_SESSION['login_user']['id']);
+              $stmt=$dbh->prepare($sql);
+              $stmt->execute($data);
 
 
-        header('Location: mypage.php');
+        //POST送信を破棄する
+        header('location: mypage.php');
         exit();
+    }
+
+
+      echo "変更しました";
+    }
+
+
+
+
+        }
     }
     ?>
 
@@ -81,14 +108,17 @@
             <form method="POST" action="check.php" enctype="multipart/form-data">
                 <div class="col-lg-12">
                 	<div class="imgInput">
-                    <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
+                    <input type="file" name="profile_image_change" accept="image/*" style="display: inline-block; text-align: center;" value="on">
                     <img src="images/images.png" alt="" class="imgView">
                         <br><br>
-                        <?php if(isset($errors['profile_image_path'])){ ?>
-                            <div class="alert alert-danger">
-                            使用できる拡張子はjpgまたはpngまたはgifのみです。
-                            </div>
-                        <?php } ?>
+            <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
+
+                <div class="alert alert-danger">
+                  画像を選択してください
+                </div>
+            <?php }elseif (isset($errors['profile_image_path']) && $errors['profile_image_path'] == 'extension') { ?>
+            <div class="alert alert-danger">使用できる拡張子はjpgまたはpngまたはgifのみです。</div>
+            <?php } ?>
                         <br>
                 	</div>
                 </div>
