@@ -31,11 +31,10 @@
 	}
 
 	// お気に入り
-	$sql='SELECT `seego_pictures`.`picture_path`,`seego_pictures`.`address`,`seego_pictures`.`text`,`seego_pictures`.`created`
-	 FROM `seego_pictures`,`seego_users`,`seego_favos`
-	  WHERE `seego_pictures`.`id`=`seego_favos`.`seego_pictures_id` 
-	  AND `seego_favos`.`user_id`=`seego_users`.`id`';
-	$data = array($_GET['id']); 
+	$sql="SELECT `seego_pictures`. * ,`seego_user_id`
+	FROM `seego_pictures`,`seego_favos` 
+	WHERE `seego_pictures`.`id`=`seego_favos`.`seego_pictures_id`";
+	$data = array(); 
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute($data);
 
@@ -51,9 +50,10 @@
 			break;
 		}
 		$favos[]=$record;
+
 	}
 
-
+// var_dump($favos);
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +120,7 @@
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
 							<?php foreach($favos as $favo){ ?>
+							<?php if($favo['seego_user_id'] == $_GET['id']){ ?>
 							<div class="contribution">
 								<div class="row" style="margin-bottom: 15px;">
 								<div class="col-md-3">
@@ -132,6 +133,7 @@
 								</div>
 								</div>
 							</div>
+							 <?php } ?>
 						    <?php } ?>
 					    						
 				</div>		

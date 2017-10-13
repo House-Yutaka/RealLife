@@ -86,7 +86,7 @@ if (!empty($_POST)) {
 	if(isset($_POST['favos']) && $_POST['favos'] == 'favo'){
         
         $sql = 'INSERT INTO `seego_favos` SET `seego_pictures_id`=? ,
-                                        	  `user_id`=?
+                                        	  `seego_user_id`=?
         ';
         $data = array($_POST['seego_pictures_id'],$_SESSION['login_user']['id']);
         $stmt = $dbh->prepare($sql);
@@ -95,7 +95,7 @@ if (!empty($_POST)) {
     }elseif(isset($_POST['favos']) && $_POST['favos'] == 'unfavo'){
         //お気に入り取り消しを押した場合、ここの処理が走る
         $sql = 'DELETE FROM `seego_favos` WHERE `seego_pictures_id`=?
-                                    		AND `user_id`=?
+                                    		AND `seego_user_id`=?
         ';
         $data = array($_POST['seego_pictures_id'],$_SESSION['login_user']['id']);
         $stmt = $dbh->prepare($sql);
@@ -210,7 +210,7 @@ if(isset($exif_datas['Orientation']) && $exif_datas['Orientation'] == 6){
 						                  $favos = $stmt->fetch(PDO::FETCH_ASSOC);
 
 						                  // 自分がお気に入り！を一回以上しているかどうかをチェック
-						                  $sql = 'SELECT COUNT(*) AS `count` FROM `seego_favos` WHERE `seego_pictures_id` = ? AND `user_id` = ?';
+						                  $sql = 'SELECT COUNT(*) AS `count` FROM `seego_favos` WHERE `seego_pictures_id` = ? AND `seego_user_id` = ?';
 						                  if(isset($_SESSION['login_user']['id'])){
 						                  $data = array($contribution['id'],$_SESSION['login_user']['id']);
 						                  $stmt = $dbh->prepare($sql);
