@@ -6,6 +6,7 @@
 	session_start();
 	require('parts/db_connect.php');
 
+	// 投稿
 	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
 	$data=array($_GET['id']);
 	$stmt=$dbh->prepare($sql);
@@ -17,7 +18,6 @@
 
 
  	// 投稿一覧を表示する
-
 	// 表示用の配列を用意
 	$contributions = array();
 	while(true){
@@ -29,6 +29,30 @@
 		}
 		$contributions[]=$record;
 	}
+
+	// お気に入り
+	$sql='SELECT `seego_pictures`.`picture_path`,`seego_pictures`.`address`,`seego_pictures`.`text`,`seego_pictures`.`created`
+	 FROM `seego_pictures`,`seego_users`,`seego_favos`
+	  WHERE `seego_pictures`.`id`=`seego_favos`.`seego_pictures_id` 
+	  AND `seego_favos`.`user_id`=`seego_users`.`id`';
+	$data = array($_GET['id']); 
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute($data);
+
+
+	// お気に入り一覧を表示する
+	// 表示用の配列を用意
+	$favos = array();
+	while(true){
+		$record = $stmt->fetch(PDO::FETCH_ASSOC);
+		// $recordはデータベースのカラム値をkeyとする。
+		// 連想配列で構成されます。（データベースから１件取ってきます。）
+		if(!$record){
+			break;
+		}
+		$favos[]=$record;
+	}
+
 
 ?>
 
@@ -95,16 +119,16 @@
 						
 						<h3>お気に入り一覧</h3><br>
 						<!-- いいね！押した記事が表示される -->
-							<?php foreach($contributions as $contribution){ ?>
+							<?php foreach($favos as $favo){ ?>
 							<div class="contribution">
 								<div class="row" style="margin-bottom: 15px;">
 								<div class="col-md-3">
-									<img src="images/ex_view_images/<?php echo $contribution['picture_path'];?>" width="180px" height="180px">
+									<img src="images/ex_view_images/<?php echo $favo['picture_path'];?>" width="180px" height="180px">
 								</div>
 								<div class="col-md-9">								
-									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br><br>
-									<span><?php echo $contribution['address']; ?></span><br><br>		
-									<?php echo "投稿日時:" . $contribution['created']; ?>
+									<span style="font-size: 17px;"><?php echo $favo['text']; ?></span><br><br>
+									<span><?php echo $favo['address']; ?></span><br><br>
+									<?php echo "投稿日時:" . $favo['created']; ?>							
 								</div>
 								</div>
 							</div>
