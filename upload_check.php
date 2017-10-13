@@ -33,7 +33,7 @@
       $data = array($user_id,$address,$text,$picture_path);
       $stmt = $dbh->prepare($sql);
       $stmt->execute($data);
-      header('Location: mypage.php');
+      header('Location: index.php');
       exit();
 
   }
