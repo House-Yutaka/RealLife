@@ -111,7 +111,15 @@ if (!empty($_POST)) {
 
 }
 
-
+// 写真の向き補正ですが何故動いてるのか分からないので触らないでください。
+$img_path="images/ex_view_images/".$contribution['picture_path'];
+$img_path2="images/ex_view_images/".$contribution['picture_path'];
+$exif_datas=exif_read_data($img_path);
+if(isset($exif_datas['Orientation']) && $exif_datas['Orientation'] == 6){
+    $source = imagecreatefromjpeg($img_path);
+    $rotate = imagerotate($source, 270, 0);
+    imagejpeg($rotate, $img_path2, 100);
+}
 ?>
 
 <!DOCTYPE html>
@@ -175,18 +183,21 @@ if (!empty($_POST)) {
 						              	}
 						              	?>
 						              	<!-- いいね！ボタン設置 -->
-						              	<form method="POST" action="">
-						                	<?php echo $likes['count'];?>
-						                	<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
-						                	<?php if($likes_chk['count'] < 1){ ?>
-						                    <input type="hidden" name="likes" value="like">
-						                    <input type="submit" value="いいね！" class="btn btn-primary btn-xs">
-						                	<?php }else{ ?>
-						                    <input type="hidden" name="likes" value="unlike">
-						                    <input type="submit" value="いいね！取り消し" class="btn btn-danger btn-xs">
-						                <?php } ?>
-						              </form>
-									<?php } ?>
+						              	<ul class="sns">
+						              		<li>
+						              			<form method="POST" action="">
+						                			<?php echo $likes['count'];?>
+						                			<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
+						                			<?php if($likes_chk['count'] < 1){ ?>
+						                    		<input type="hidden" name="likes" value="like">
+						                    		<input type="submit" value="いいね！" class="btn btn-primary btn-xs">
+						                			<?php }else{ ?>
+						                    		<input type="hidden" name="likes" value="unlike">
+						                    		<input type="submit" value="いいね！取り消し" class="btn btn-danger btn-xs">
+						                			<?php } ?>
+						              			</form>
+						             		 </li>
+											<?php } ?>
 									<!-- お気に入り機能 -->
 									<?php 
 										  if($contribution != false) {
@@ -212,17 +223,20 @@ if (!empty($_POST)) {
 						              	}
 						              	?>
 						              	<!-- ★　ボタン設置 -->
-						              	<form method="POST" action="">
-						                	<?php echo $favos['count'];?>
-						                	<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
-						                	<?php if($favos_chk['count'] < 1){ ?>
-						                    <input type="hidden" name="favos" value="favo">
-						                    <input type="submit" value="★" class="btn btn-primary btn-xs">
-						                	<?php }else{ ?>
-						                    <input type="hidden" name="favos" value="unfavo">
-						                    <input type="submit" value="★" class="btn btn-danger btn-xs">
-						                <?php } ?>
-						              </form>
+						              		<li>
+						              			<form method="POST" action="">
+						                			<?php echo $favos['count'];?>
+						                				<input type="hidden" name="seego_pictures_id" value="<?php echo $contribution['id']; ?>">
+						                				<?php if($favos_chk['count'] < 1){ ?>
+						                    			<input type="hidden" name="favos" value="favo">
+						                    			<input type="submit" value="★" class="btn btn-primary btn-xs">
+						                				<?php }else{ ?>
+						                    			<input type="hidden" name="favos" value="unfavo">
+						                    			<input type="submit" value="★" class="btn btn-danger btn-xs">
+						                			<?php } ?>
+						              			</form>
+						              		</li>
+						                </ul>
 									<?php } ?>
 								</div>
 							</div>

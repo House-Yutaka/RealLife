@@ -28,3 +28,16 @@ li{
 	float: right;
 	margin-right: 25px;
 }
+
+/* マーカーを使用しない設定（無くてもマーカーは表示されませんが念の為） */
+.sns{ 
+	list-style-type:none;
+ }
+/* display:inline-block;を指定 */
+.sns li{
+    display:inline-block;
+    margin-right:5px;
+    vertical-align:bottom;
+    *display: inline;   <!-- IE用のハック -->
+    zoom: 1;        <!-- IE用の hasLayout を true にするための記述 -->
+}
