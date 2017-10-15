@@ -17,7 +17,7 @@
 	<div class="wrapper">
     
     <?php
-    $user_icon = 'images/images.png';
+    $user_icon = '';
     $username = '';
     $email = '';
     $password = '';
@@ -61,26 +61,21 @@
             }
         
     if (empty($errors)){
-        //確認ページへ飛ばす。
         
           //ユニークなidを生成してあげる
         $fileName=$_SESSION['login_user']['id']."__".$fileName;
         // 前回の画像を削除する
-        unlink('profile_image/'.$_SESSION['login_user']['picture_path']);
+        unlink($_SESSION['login_user']['user_icon']);
   
         // すべてのチェックでエラーがなければ画像アップロード　　　一瞬画像データを保持する
-        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'profile_image/'.$fileName);
+        move_uploaded_file($_FILES['profile_image_path']['tmp_name'], 'images/ex_view_images/'.$fileName);
         
 
-        //check.phpへリダイレクト
-        // $_SESSION スーパーグローバル変数
-        // データを一時的に保存する
-        // 一時的なものなので長期間は保存できないので注意が必要
-        $_SESSION['login_user']['picture_path'] = $fileName;
+        $_SESSION['login_user']['user_icon'] = $fileName;
 
         // データベースを更新する
-              $sql = 'UPDATE `users` SET `picture_path`=? WHERE `id`=?';
-              $data= array($_SESSION['login_user']['picture_path'],$_SESSION['login_user']['id']);
+              $sql = 'UPDATE `seego_users` SET `user_icon`=? WHERE `id`=?';
+              $data= array($_SESSION['login_user']['user_icon'],$_SESSION['login_user']['id']);
               $stmt=$dbh->prepare($sql);
               $stmt->execute($data);
 
@@ -98,18 +93,19 @@
 
 
         }
-    }
+    
     ?>
 
 
         <div class="container">
 		<div class="change">
             <div class="row">
-            <form method="POST" action="check.php" enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="col-lg-12">
                 	<div class="imgInput">
-                    <input type="file" name="profile_image_change" accept="image/*" style="display: inline-block; text-align: center;" value="on">
-                    <img src="images/images.png" alt="" class="imgView">
+                    <input type="hidden" name="profile_image_change" value="on">
+                    <img src="images/images.png" alt="user_icon" class="imgView">
+                    <input type="file" name="profile_image_path" style="display: inline-block; text-align: center;" accept="image/*">
                         <br><br>
             <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
 
@@ -207,5 +203,3 @@ $(function(){
 </body>
 </html>
 
-                        <img alt="userpic" src="<?php echo $user_icon; ?>"><br><br>
-                        <input type="file" name="profile_image_path" accept="image/*" style="display: inline-block; text-align: center;">
