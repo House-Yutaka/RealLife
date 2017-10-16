@@ -81,7 +81,7 @@
 
 
         //POST送信を破棄する
-        header('location: mypage.php');
+        header('location: mypage.php?id='.$_SESSION['login_user']['id']);
         exit();
     }
 

@@ -6,8 +6,24 @@
 	session_start();
 	require('parts/db_connect.php');
 
-	if (!empty($_GET)) {
+	// iconの表示
+	$sql='SELECT `id`,`user_icon` FROM `seego_users`';
+	$data=array();
+	$stmt=$dbh->prepare($sql);
+	$stmt->execute($data);
 
+	$icons = array();
+	while(true){
+		$record = $stmt->fetch(PDO::FETCH_ASSOC);
+		// $recordはデータベースのカラム値をkeyとする。
+		// 連想配列で構成されます。（データベースから１件取ってきます。）
+		if(!$record){
+			break;
+		}
+		$icons[]=$record;
+	}
+
+	if (!empty($_GET)) {
 
 	// 投稿
 	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
@@ -58,6 +74,8 @@
 
 }
 
+
+
 // var_dump($favos);
 ?>
 
@@ -83,7 +101,11 @@
 						<?php if($_SESSION['login_user']['user_icon']==null){ ?>
 							<img src="images/images.png">
 						<?php }else{ ?>
-							<img src="images/<?php $_POST['login_user']['user_icon'];?>">
+							<?php foreach($icons as $icon){ 
+								if ($icon['id']==$_SESSION['login_user']['id']) { ?>
+									<img src="images/ex_view_images/<?php  echo $icon['user_icon'];?>">
+								<?php } ?>
+							<?php } ?>
 						<?php } ?>
 	  					 <div>
 	  					 	<!-- usernameが飛んでくる -->
