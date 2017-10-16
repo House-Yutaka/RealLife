@@ -6,6 +6,9 @@
 	session_start();
 	require('parts/db_connect.php');
 
+	if (!empty($_GET)) {
+
+
 	// 投稿
 	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
 	$data=array($_GET['id']);
@@ -52,6 +55,8 @@
 		$favos[]=$record;
 
 	}
+
+}
 
 // var_dump($favos);
 ?>
