@@ -112,14 +112,14 @@ if (!empty($_POST)) {
 }
 
 // 写真の向き補正ですが何故動いてるのか分からないので触らないでください。
-$img_path="images/ex_view_images/".$contribution['picture_path'];
-$img_path2="images/ex_view_images/".$contribution['picture_path'];
-$exif_datas=exif_read_data($img_path);
-if(isset($exif_datas['Orientation']) && $exif_datas['Orientation'] == 6){
-    $source = imagecreatefromjpeg($img_path);
-    $rotate = imagerotate($source, 270, 0);
-    imagejpeg($rotate, $img_path2, 100);
-}
+// $img_path="images/ex_view_images/".$contribution['picture_path'];
+// $img_path2="images/ex_view_images/".$contribution['picture_path'];
+// $exif_datas=exif_read_data($img_path);
+// if(isset($exif_datas['Orientation']) && $exif_datas['Orientation'] == 6){
+//     $source = imagecreatefromjpeg($img_path);
+//     $rotate = imagerotate($source, 270, 0);
+//     imagejpeg($rotate, $img_path2, 100);
+// }
 ?>
 
 <!DOCTYPE html>
