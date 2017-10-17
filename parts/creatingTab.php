@@ -6,7 +6,7 @@
 
 	if(!empty($_SESSION['login_user']['id'])){
 	// タブの名前
-		$tabNames = array("Home","Mypage","Upload","About","Edit","Contact");
+		$tabNames = array("Home","Mypage","Upload","About","Contact");
 
 		// それぞれのタブのリンク
 		$links = array(
@@ -14,7 +14,7 @@
 		"mypage.php?id=".$_SESSION['login_user']['id'],
 		"upload.php",
 		"about.php",
-		"edit.php",
+		// "edit.php",
 		"contact.php",
 		// "timeline.php"
 		);
@@ -25,8 +25,7 @@
 		"<i class=\"fa fa-meh-o fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-camera-retro fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-info fa-fw faa-ring\" aria-hidden=\"true\"></i>",
-		"<i class=\"fa fa-pencil-square-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
-			,
+		// "<i class=\"fa fa-pencil-square-o fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		"<i class=\"fa fa-question fa-fw faa-ring\" aria-hidden=\"true\"></i>",
 		// "<i class=\"fa fa-clock-o fa-fw faa-ring\" aria-hidden=\"true\"></i>"
 		);
