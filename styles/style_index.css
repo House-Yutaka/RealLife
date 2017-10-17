@@ -12,3 +12,25 @@
 	padding-top: 30px;
 
 }
+
+.back-style2{
+	background: rgba(243, 201, 17, 0.3); 
+	border-radius: 5px; border: solid 2px #001a42;
+	margin-bottom: 18px; 
+	padding-top: 20px;
+}
+
+.back-color2{
+	background-color: rgba(30, 30, 30, 0.9);
+	width: 100%;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+
+}
+
+/*.detail{
+	float: left;
+	margin-top: 20px;
+}*/
