@@ -70,7 +70,7 @@ if(!empty($_POST)){
         // $_SESSION['user_info']['user_id'] = $user_id;
         $_SESSION['login_user']['address'] = $address;
         $_SESSION['login_user']['text'] = $text;
-        $_SESSION['login_user']['eva'] = $_POST['eva'];
+        // $_SESSION['login_user']['eva'] = $_POST['eva'];
         $_SESSION['login_user']['profile_image_path'] = $fileName;
 
     //check.phpに飛ぶ
@@ -100,7 +100,7 @@ if(!empty($_POST)){
         <div class="row">
           <div class="col-lg-12">
             <form method="POST" action="" enctype="multipart/form-data">
-                <div style="height: 600px;" class="imgInput">
+                <div style="height: 550px;" class="imgInput">
                   <input type="file" name="profile_image_path" class="btn btn-sm" accept="image/*" value="<?php echo $filename; ?>">
                 </div><!--/.imgInput-->
             <?php if(isset($errors['profile_image_path']) && $errors['profile_image_path'] =='blank'){ ?>
@@ -136,10 +136,10 @@ if(!empty($_POST)){
                 </p>
 
                 <!-- 評価点 -->
-              <p style="margin: 0px;">評価: <span id="eva_tv">0.0</span> / 5.0</p>
+<!--               <p style="margin: 0px;">評価: <span id="eva_tv">0.0</span> / 5.0</p>
               <input type="range" value="0" name="eva" style="width: 250px;" onchange="onEva_change(value)" oninput="onEva_in(value)">
 
-              <!-- 投稿ボタン -->
+ -->              <!-- 投稿ボタン -->
               <input type="submit" name="確認画面へ" style="margin-top: 20px;">
               </form>
           </div>
