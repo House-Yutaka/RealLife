@@ -24,7 +24,7 @@ $stmt->execute($data);
 // var_dump($contribution);
 // echo '</pre>';
 
-$sql ="SELECT `seego_pictures`.`id`,`user_id`,`username` 
+$sql ="SELECT `seego_pictures`.`id`,`user_id`,`username` ,`user_icon`
   	   FROM `seego_pictures`,`seego_users` 
   	   WHERE `seego_pictures`.`user_id` = `seego_users`.`id`";
 $stmt = $dbh->prepare($sql);
@@ -147,7 +147,15 @@ if (!empty($_POST)) {
 				    	</div>
 				   		<div class="back-color">
 				   			<div class="row">
-				   				<div class="col-lg-3"></div>
+				   				<div class="col-lg-3">
+				   					<div class="prof-img">
+					   					<?php foreach ($userdatas as $userdata) {  ?>
+											<?php if($userdata['id'] == $_GET['id']){ ?>
+													<img src="images/ex_view_images/<?php  echo $userdata['user_icon'];?>">
+											<?php } ?>
+										<?php } ?>
+									</div>
+				   				</div>
 				   				<div class="col-lg-9">
 						   			<div class="deyail">
 						   				<li style="margin-bottom: 8px;"><?php echo $contribution['address']; ?></li>

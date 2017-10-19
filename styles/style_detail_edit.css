@@ -1,34 +1,11 @@
-li{
-	list-style:none;
-}
-
-
 .back-style{
+	margin: 80px 0px; 
 	background: rgba(243, 201, 17, 0.3); 
-	border-radius: 15px; border: solid 2px #001a42;
-	margin-bottom: 18px;
-}
-
-.back-color{
-	background-color: rgba(30, 30, 30, 0.9);
-	width: 100%;
+	border-radius: 5px; border: solid 2px #001a42;
+	padding-bottom: 15px;
 	height: 100%;
-	color: white;
-	margin-bottom: 20px;
-	padding-top: 20px;
+	padding-top: 30px;
 	text-align: center;
-	padding-bottom: 10px;
-}
-
-.image{
-	margin-top: 20px;
-	text-align: center;
-}
-
-
-.detail_name{
-	float: right;
-	margin-right: 25px;
 }
 
 /* マーカーを使用しない設定（無くてもマーカーは表示されませんが念の為） */
@@ -42,15 +19,4 @@ li{
     vertical-align:bottom;
     *display: inline;   <!-- IE用のハック -->
     zoom: 1;        <!-- IE用の hasLayout を true にするための記述 -->
-}
-
-.prof-img{
-	text-align: center;
-}
-
-.prof-img img {
-	text-align: center;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;	
 }

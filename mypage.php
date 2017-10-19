@@ -26,7 +26,7 @@
 	if (!empty($_GET)) {
 
 	// 投稿
-	$sql='SELECT `picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
+	$sql='SELECT `id`,`picture_path`,`address`,`text`,`created` FROM `seego_pictures` WHERE `user_id`=?';
 	$data=array($_GET['id']);
 	$stmt=$dbh->prepare($sql);
 	$stmt->execute($data);
@@ -48,6 +48,8 @@
 		}
 		$contributions[]=$record;
 	}
+
+	// var_dump($contributions);
 
 	// お気に入り
 	$sql="SELECT `seego_pictures`. * ,`seego_user_id`
@@ -137,7 +139,12 @@
 								<div class="col-md-9">								
 									<span style="font-size: 17px;"><?php echo $contribution['text']; ?></span><br><br>
 									<span><?php echo $contribution['address']; ?></span><br><br>		
-									<?php echo "投稿日時:" . $contribution['created']; ?>
+									<?php echo "投稿日時:" . $contribution['created']; ?><br><br>
+
+									<?php if($_SESSION['login_user']['id']==$_GET['id']){ ?>
+                  						<a href="detail_edit.php?id=<?php echo  $contribution['id']; ?>" class="btn btn-success btn-xs">編集</a>
+                 						<a href="delete.php?id=<?php echo  $contribution['id']; ?>" class="btn btn-danger btn-xs">削除</a>
+              						<?php } ?>
 								</div>
 								</div>
 							</div>
@@ -156,7 +163,8 @@
 								<div class="col-md-9">								
 									<span style="font-size: 17px;"><?php echo $favo['text']; ?></span><br><br>
 									<span><?php echo $favo['address']; ?></span><br><br>
-									<?php echo "投稿日時:" . $favo['created']; ?>							
+									<?php echo "投稿日時:" . $favo['created']; ?>	<br>
+									<a href="#" class="btn btn-danger btn-xs">お気に入り解除</a>						
 								</div>
 								</div>
 							</div>
