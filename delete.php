@@ -42,7 +42,7 @@ if(!isset($_SESSION['login_user']['id'])){
 
   $content=$record['picture_path']['address']['text'];
   
-  header('Location: mypage.php?delete=on&content&id='.$content.$_SESSION['login_user']['id']);
+  header('Location: mypage.php?delete=on&content&id='.$_SESSION['login_user']['id']);
   exit();
 
 ?>
